@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class TimeBarController : MonoBehaviour
 {
     [SerializeField] Slider Slider = null;
+    [SerializeField] Slider Slider1 = null;
     [SerializeField] GameManager GameManager = null;
     readonly int limitTime = 100;
 
@@ -14,12 +15,14 @@ public class TimeBarController : MonoBehaviour
     {
         var count = limitTime;
         Slider.maxValue = limitTime;
+        Slider1.maxValue = limitTime;
         while (true)
         {
             if (Slider.minValue < count)
             {
                 --count;
                 Slider.value = count;
+                Slider1.value = count;
 
                 yield return new WaitForSeconds(0.1f);
             }

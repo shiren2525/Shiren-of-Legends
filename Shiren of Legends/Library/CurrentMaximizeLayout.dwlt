@@ -22,10 +22,10 @@ MonoBehaviour:
     y: 30
     width: 1460
     height: 757
-  m_MinSize: {x: 540, y: 494}
+  m_MinSize: {x: 715, y: 494}
   m_MaxSize: {x: 18010, y: 14044}
   vertical: 0
-  controlID: 5809
+  controlID: 84
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 20e5ffffd2e7ffff72fbffff2833000088330000de330000
+      m_ExpandedIDs: f4fafffff8faffff72fbffffe4320000303300009a330000f2330000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -207,14 +207,14 @@ MonoBehaviour:
     y: 0
     width: 310
     height: 757
-  m_MinSize: {x: 104, y: 122}
-  m_MaxSize: {x: 4004, y: 4022}
-  m_ActualView: {fileID: 7}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
   - {fileID: 7}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,7 +251,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
-  m_LastInspectedObjectInstanceID: 13020
+  m_LastInspectedObjectInstanceID: 13028
   m_LastVerticalScrollValue: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 494}
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
-  controlID: 5768
+  controlID: 85
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -368,9 +368,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.2009555, y: 6.177936, z: 55.195312}
+    m_Target: {x: 1.7747728, y: 7.6073747, z: 38.817844}
     speed: 2
-    m_Value: {x: 1.2009555, y: 6.177936, z: 55.195312}
+    m_Value: {x: 1.7747728, y: 7.6073747, z: 38.817844}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -403,9 +403,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 11.355032
+    m_Target: 6.534747
     speed: 2
-    m_Value: 11.355032
+    m_Value: 6.534747
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -476,8 +476,8 @@ MonoBehaviour:
     y: 404
     width: 900
     height: 353
-  m_MinSize: {x: 234, y: 272}
-  m_MaxSize: {x: 10004, y: 10022}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -528,14 +528,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: D:\unity\Shiren of Legends
+  m_LastProjectPath: D:\Document\GitHub\Shiren-of-Legends\Shiren of Legends
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e6300000
-    m_LastClickedID: 12518
-    m_ExpandedIDs: 00000000942d0000702f0000782f000000ca9a3b
+    m_SelectedIDs: ec300000
+    m_LastClickedID: 12524
+    m_ExpandedIDs: 00000000962d0000762f00007e2f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -563,7 +563,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000942d0000702f0000782f000000ca9a3b
+    m_ExpandedIDs: 00000000962d0000762f00007e2f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -588,9 +588,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: dc320000
-    m_LastClickedInstanceID: 13020
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: e4320000
+    m_LastClickedInstanceID: 13028
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
