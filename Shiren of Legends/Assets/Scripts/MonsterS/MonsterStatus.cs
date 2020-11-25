@@ -7,16 +7,14 @@ public class MonsterStatus : MonoBehaviour
     public int MyHP { get; set; }
     public int MyAD { get; set; }
 
-    private int lane;
-    public int SecondLane { get; set; }    
+    public CardLanes CardLanes { get; set; }
 
-    public void Create(int ID, int i, int j)
+    public void Create(int ID, CardLanes cardLanes)
     {
         var MonsterDataObj = GameObject.Find("MonsterData");
         var monsterData = MonsterDataObj.GetComponent<MonsterData>();
         myID = ID;
-        lane = i;
-        SecondLane = j;        
+        CardLanes = cardLanes;
         MyHP = monsterData.KeyValuesHP[myID];
         MyAD = monsterData.KeyValuesAD[myID];
 
@@ -62,7 +60,7 @@ public class MonsterStatus : MonoBehaviour
         var CardManager = GameObject.Find("CardManager");
         var cardManager = CardManager.GetComponent<CardManager>();
 
-        cardManager.Destroyer(new CardLanes { X = lane, Y = SecondLane });
+        cardManager.Destroyer(CardLanes);
     }
 
     [SerializeField] Text Text = null;

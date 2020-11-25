@@ -16,11 +16,11 @@ public class Card00Anivia : MonoBehaviour, IHasSlain
 
         if (player)
         {
-            cardManager.JustMovement(cardLanes, 6);
+            cardManager.JustMovement(cardLanes, (int)EnumBoardLength.MaxBoardLengthX);
         }
         else if (!player)
         {
-            cardManager.JustMovement(cardLanes, 0);
+            cardManager.JustMovement(cardLanes, (int)EnumBoardLength.MinBoardLength);
         }
         canRespawn = !canRespawn;
         return false;

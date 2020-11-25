@@ -47,7 +47,7 @@ public class CardStatus : MonoBehaviour
         buffCount++;
         var BuffManagerObj = GameObject.Find(nameof(BuffManager));
         var buffManager = BuffManagerObj.GetComponent<BuffManager>();
-        buffManager.Buff(CardLanes.X, CardLanes.Y, Player);
+        buffManager.Buff(CardLanes, Player);
     }
 
     private void ColorChange()

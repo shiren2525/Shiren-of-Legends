@@ -16,20 +16,11 @@ public class BoardManager : MonoBehaviour
 
     private void SetupBlock()
     {
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < TransformList.GetLength(1); i++)
         {
             TransformList[0, i] = transforms[i];
-        }
-        for (int i = 0; i < 7; i++)
-        {
             TransformList[1, i] = transforms1[i];
-        }
-        for (int i = 0; i < 7; i++)
-        {
             TransformList[2, i] = transforms2[i];
-        }
-        for (int i = 0; i < 7; i++)
-        {
             TransformList[3, i] = transforms3[i];
         }
     }

@@ -28,11 +28,11 @@ public class CardManager : MonoBehaviour
     {
         if (turn)
         {
-            return BoardList[lane, 6] == null;
+            return BoardList[lane, (int)EnumBoardLength.MaxBoardLengthX] == null;
         }
         else if (!turn)
         {
-            return BoardList[lane, 0] == null;
+            return BoardList[lane, (int)EnumBoardLength.MinBoardLength] == null;
         }
         return turn;
     }
@@ -66,7 +66,7 @@ public class CardManager : MonoBehaviour
     public void SummonMonster(int ID, CardLanes cardLanes)
     {
         BoardList[cardLanes.X, cardLanes.Y] = Instantiate(monsterObjList[ID], BoardManager.TransformList[cardLanes.X, cardLanes.Y].position, Quaternion.identity) as GameObject;
-        BoardList[cardLanes.X, cardLanes.Y].GetComponent<MonsterStatus>().Create(ID, cardLanes.X, cardLanes.Y);
+        BoardList[cardLanes.X, cardLanes.Y].GetComponent<MonsterStatus>().Create(ID, cardLanes);
     }
 
     public void Movement(int gap, bool turn)
@@ -77,14 +77,14 @@ public class CardManager : MonoBehaviour
             if (turn)
             {
                 for (int j = 0; j < BoardList.GetLength(1); j++)
-                {                    
+                {
                     Movement(new CardLanes { X = i, Y = j }, j + gap);
                 }
             }
             else if (!turn)
             {
                 for (int j = BoardList.GetLength(1) - 1; j >= 0; j--)
-                {                    
+                {
                     Movement(new CardLanes { X = i, Y = j }, j + gap);
                 }
             }
@@ -107,7 +107,7 @@ public class CardManager : MonoBehaviour
             {
                 PassiveSkill(cardLanes);
 
-                if (nextBoard == 0 || nextBoard == 6)
+                if (nextBoard == (int)EnumBoardLength.MinBoardLength || nextBoard == (int)EnumBoardLength.MaxBoardLengthX)
                 {
                     PlayerStatus.AddDirectDamage(card.MyAD, turn);
                     Destroyer(cardLanes);
@@ -119,26 +119,26 @@ public class CardManager : MonoBehaviour
                 }
                 else if (BoardList[cardLanes.X, nextBoard].GetComponent<CardStatus>())
                 {
-                    Battle<CardStatus>(cardLanes, nextBoard,CreateEnemy<CardStatus>(cardLanes.X, nextBoard));
+                    Battle<CardStatus>(cardLanes, nextBoard, CreateEnemy<CardStatus>(cardLanes.X, nextBoard));
                     return;
                 }
                 else if (BoardList[cardLanes.X, nextBoard].GetComponent<MonsterStatus>())
                 {
                     // TODO slain monster
-                    BattleMonster<MonsterStatus>(cardLanes, nextBoard, CreateEnemy<MonsterStatus>(cardLanes.X, nextBoard),turn);
+                    BattleMonster<MonsterStatus>(cardLanes, nextBoard, CreateEnemy<MonsterStatus>(cardLanes.X, nextBoard), turn);
                     return;
                 }
             }
-        }       
+        }
     }
 
     public Type CreateEnemy<Type>(int lane, int nextBoard)
     {
-        var enemy= BoardList[lane, nextBoard].GetComponent<Type>();
+        var enemy = BoardList[lane, nextBoard].GetComponent<Type>();
         return enemy;
     }
 
-    public void Battle<Type>(CardLanes cardLanes, int nextBoard,Type type) where Type:CardStatus
+    public void Battle<Type>(CardLanes cardLanes, int nextBoard, Type type) where Type : CardStatus
     {
         var thisCard = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
         var enemyCard = type;
@@ -158,11 +158,11 @@ public class CardManager : MonoBehaviour
         else
         {
             Destroyer(cardLanes);
-            Destroyer(new CardLanes { X=cardLanes.X, Y=nextBoard});
+            Destroyer(new CardLanes { X = cardLanes.X, Y = nextBoard });
         }
     }
 
-    public void BattleMonster<Type>(CardLanes cardLanes, int nextBoard,Type type, bool player) where Type:MonsterStatus
+    public void BattleMonster<Type>(CardLanes cardLanes, int nextBoard, Type type, bool player) where Type : MonsterStatus
     {
         var thisCard = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
         var enemyMonster = type;

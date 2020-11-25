@@ -7,11 +7,11 @@ public class CardParent : MonoBehaviour
     public IEnumerable<SendCard> FullSearch(Func<bool, int, bool> func)
     {
         var CardManager = GameObject.Find("CardManager");
-        var cardManager = CardManager.GetComponent<CardManager>();        
+        var cardManager = CardManager.GetComponent<CardManager>();
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < cardManager.BoardList.GetLength(0); i++)
         {
-            for (int j = 1; j < 7; j++)
+            for (int j = 1; j < cardManager.BoardList.GetLength(1); j++)
             {
                 if (cardManager.BoardList[i, j] == null)
                     continue;
@@ -24,16 +24,16 @@ public class CardParent : MonoBehaviour
 
                 if (func(enemyPlayer, i))
                 {
-                    yield return new SendCard { Lane = i, Player = enemyPlayer, CardStatus = card };         
+                    yield return new SendCard { Lane = i, Player = enemyPlayer, CardStatus = card };
                 }
             }
-        }        
+        }
     }
 }
 
 public class SendCard
 {
-    public int Lane { get; set; }    
+    public int Lane { get; set; }
     public bool Player { get; set; }
     public CardStatus CardStatus { get; set; }
 }

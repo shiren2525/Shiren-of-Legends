@@ -61,8 +61,9 @@ public class GameManager : MonoBehaviour
         SoundManager.PlaySound(1);
 
         if (turnNum % 5 == 0)
-        {            
-            CardManager.SummonMonster(Random.Range(0, 5), new CardLanes { X = 3, Y = 3 });
+        {
+            CardManager.SummonMonster(Random.Range(0, 5), 
+                new CardLanes { X = (int)EnumBoardLength.MaxBoardLengthX / 2, Y = (int)EnumBoardLength.MaxBoardLengthY });
         }
         NextFaith();
     }
@@ -144,11 +145,11 @@ public class GameManager : MonoBehaviour
     {
         if (!turn)
         {
-            CardManager.Summon(new CardLanes { X = i, Y = 0 }, cardID, turn);
+            CardManager.Summon(new CardLanes { X = i, Y = (int)EnumBoardLength.MinBoardLength }, cardID, turn);
         }
         else if (turn)
-        { 
-            CardManager.Summon(new CardLanes { X = i, Y = 6 }, cardID, turn);
+        {
+            CardManager.Summon(new CardLanes { X = i, Y = (int)EnumBoardLength.MaxBoardLengthX }, cardID, turn);
         }
         SoundManager.PlaySound(2);
     }

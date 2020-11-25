@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class BuffManager : MonoBehaviour
@@ -7,43 +6,43 @@ public class BuffManager : MonoBehaviour
     public List<int> RedBuffList { get; set; } = new List<int> { };
     public List<int> BlueBuffList { get; set; } = new List<int> { };
 
-    public void Buff(int i, int j, bool player)
+    public void Buff(CardLanes cardLanes, bool player)
     {        
         if (player)
         {
             foreach (var value in RedBuffList)
             {
-                Buff(value, i, j);
+                Buff(value, cardLanes);
             }
         }
         else if (!player)
         {
             foreach (var value in BlueBuffList)
             {
-                Buff(value, i, j);
+                Buff(value, cardLanes);
             }
         }
     }
 
-    public void Buff(int buffNum, int lane, int secondLane)
+    public void Buff(int buffNum, CardLanes cardLanes)
     {
         var buffData = gameObject.AddComponent<BuffData>();
         switch (buffNum)
         {
             case (int)EnumMonster.Infernal:
-                buffData.InfernalBuff(lane, secondLane);
+                buffData.InfernalBuff(cardLanes);
                 break;
             case (int)EnumMonster.Mountain:
-                buffData.MountainBuff(lane, secondLane);
+                buffData.MountainBuff(cardLanes);
                 break;
             case (int)EnumMonster.Cloud:
-                buffData.CloudBuff(lane, secondLane);
+                buffData.CloudBuff(cardLanes);
                 break;
             case (int)EnumMonster.Ocean:
-                buffData.OceanBuff(lane, secondLane);
+                buffData.OceanBuff(cardLanes);
                 break;
             case (int)EnumMonster.Elder:
-                buffData.ElderBuff(lane, secondLane);
+                buffData.ElderBuff(cardLanes);
                 break;
 
             default:

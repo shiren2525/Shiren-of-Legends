@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BuffData : MonoBehaviour
 {
@@ -11,40 +9,40 @@ public class BuffData : MonoBehaviour
         return cardManager;
     }
 
-    private CardStatus CreateCardStatus(int lane, int secondLane)
+    private CardStatus CreateCardStatus(CardLanes cardLanes)
     {
         var cardManager = CreateCardManager();
-        var card = cardManager.BoardList[lane, secondLane].GetComponent<CardStatus>();
+        var card = cardManager.BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
         return card;
     }
 
-    public void InfernalBuff(int lane,int secondLane)
+    public void InfernalBuff(CardLanes cardLanes)
     {
-        var card = CreateCardStatus(lane,secondLane);
+        var card = CreateCardStatus(cardLanes);
         card.MyAD++;
     }
 
-    public void MountainBuff(int lane,int secondLane)
+    public void MountainBuff(CardLanes cardLanes)
     {
-        var card = CreateCardStatus(lane, secondLane);
+        var card = CreateCardStatus(cardLanes);
         card.MyHP++;
     }
 
-    public void CloudBuff(int lane,int secondLane)
+    public void CloudBuff(CardLanes cardLanes)
     {
         var cardManager = CreateCardManager();
-        //cardManager.Skill(lane, secondLane);        
+        cardManager.Skill(cardLanes);
     }
 
-    public void OceanBuff(int lane,int secondLane)
+    public void OceanBuff(CardLanes cardLanes)
     {
-        var card = CreateCardStatus(lane, secondLane);
+        var card = CreateCardStatus(cardLanes);
         card.IsOcean = true;
     }
 
-    public void ElderBuff(int lane,int secondLane)
+    public void ElderBuff(CardLanes cardLanes)
     {
-        var card = CreateCardStatus(lane, secondLane);
+        var card = CreateCardStatus(cardLanes);
         card.CreateBuff();
     }
 }
