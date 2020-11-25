@@ -62,7 +62,7 @@ public class MonsterStatus : MonoBehaviour
         var CardManager = GameObject.Find("CardManager");
         var cardManager = CardManager.GetComponent<CardManager>();
 
-        cardManager.Destroyer(lane, SecondLane);
+        cardManager.Destroyer(new CardLanes { X = lane, Y = SecondLane });
     }
 
     [SerializeField] Text Text = null;
@@ -71,4 +71,3 @@ public class MonsterStatus : MonoBehaviour
         Text.text = MyAD.ToString() + "/" + MyHP.ToString();
     }
 }
-

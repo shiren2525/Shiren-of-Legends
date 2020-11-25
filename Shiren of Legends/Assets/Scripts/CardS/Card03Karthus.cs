@@ -2,7 +2,7 @@
 {
     private bool canSkill = true;
 
-    public bool HasSlain(int lane, int secondLane, bool player)
+    public bool HasSlain(CardLanes cardLanes, bool player)
     {
         if (!canSkill)
             return canSkill;

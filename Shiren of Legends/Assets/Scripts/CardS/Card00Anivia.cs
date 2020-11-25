@@ -4,7 +4,7 @@ public class Card00Anivia : MonoBehaviour, IHasSlain
 {
     private bool canRespawn = true;
 
-    public bool HasSlain(int lane, int secondLane, bool player)
+    public bool HasSlain(CardLanes cardLanes, bool player)
     {
         if (!canRespawn)
             return true;
@@ -16,11 +16,11 @@ public class Card00Anivia : MonoBehaviour, IHasSlain
 
         if (player)
         {
-            cardManager.JustMovement(lane, secondLane, 6);
+            cardManager.JustMovement(cardLanes, 6);
         }
         else if (!player)
         {
-            cardManager.JustMovement(lane, secondLane, 0);
+            cardManager.JustMovement(cardLanes, 0);
         }
         canRespawn = !canRespawn;
         return false;

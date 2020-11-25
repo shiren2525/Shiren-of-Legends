@@ -7,22 +7,9 @@ using UnityEngine.UI;
 
 public class NarrationManager : MonoBehaviour
 {
-    [SerializeField] List<string> NarrationList = new List<string>();
+    [SerializeField] List<string> narrationList = new List<string>();
     [SerializeField] Text NarrationText = null;
     [SerializeField] List<string> showSerifList = new List<string>();
-
-    void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SetSerif(0);
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            SetSerif(1);
-        }
-    }
 
     private void Start()
     {
@@ -34,15 +21,15 @@ public class NarrationManager : MonoBehaviour
         var loadText = (Resources.Load("NarrationList", typeof(TextAsset)) as TextAsset).text;
         string[] spliteText = loadText.Split('\n');
 
-        foreach(var str in spliteText)
+        foreach (var str in spliteText)
         {
-            NarrationList.Add(str);
+            narrationList.Add(str);
         }
     }
 
     public void SetSerif(int number)
-    {        
-        showSerifList.Add(NarrationList[number]);        
+    {
+        showSerifList.Add(narrationList[number]);
 
         if (showSerifList.Count == 1)
         {
@@ -54,9 +41,9 @@ public class NarrationManager : MonoBehaviour
     {
         NarrationText.text = showSerifList[num];
 
-        await Task.Delay(TimeSpan.FromSeconds(0.5));        
+        await Task.Delay(TimeSpan.FromSeconds(0.5));
 
-        if (showSerifList.Count > num + 1)
+        if (showSerifList.Count > num + 1 && showSerifList.Count < 8)
         {
             BeginText(++num);
         }
@@ -64,8 +51,6 @@ public class NarrationManager : MonoBehaviour
         {
             NarrationText.text = "";
             showSerifList.Clear();
-        }        
+        }
     }
 }
-
-

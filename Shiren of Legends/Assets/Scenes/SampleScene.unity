@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c5b8500957cb24ab12c091732e8694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NarrationList: []
+  narrationList: []
   NarrationText: {fileID: 1186271856}
   showSerifList: []
 --- !u!4 &422310774
@@ -3604,8 +3604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+  m_EffectDistance: {x: 1.5, y: 1.5}
   m_UseGraphicAlpha: 0
 --- !u!1 &1203090544
 GameObject:
@@ -3654,7 +3654,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203090544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -4733,10 +4733,10 @@ MonoBehaviour:
   - {fileID: 5621832499956403903, guid: 3e63fe9e52d78fd4e895ba0070508c05, type: 3}
   monsterObjList:
   - {fileID: 2496637577030036584, guid: e1b6e76422233f648b66611d5e6c77a6, type: 3}
-  - {fileID: 2496637577030036584, guid: e1b6e76422233f648b66611d5e6c77a6, type: 3}
-  - {fileID: 2496637577030036584, guid: e1b6e76422233f648b66611d5e6c77a6, type: 3}
-  - {fileID: 2496637577030036584, guid: e1b6e76422233f648b66611d5e6c77a6, type: 3}
-  - {fileID: 2496637577030036584, guid: e1b6e76422233f648b66611d5e6c77a6, type: 3}
+  - {fileID: 2496637577030036584, guid: 522de225ed76a2143a92fbb03f3bf352, type: 3}
+  - {fileID: 2496637577030036584, guid: 30c9ec3e2d1a3aa45b7143ddb5cdff01, type: 3}
+  - {fileID: 2496637577030036584, guid: 0f5c771e28659a243956fa4cb493da90, type: 3}
+  - {fileID: 2496637577030036584, guid: fc5216669944d044790f78a05f6420da, type: 3}
   transformsHnad:
   - {fileID: 1429730692}
   - {fileID: 2103075638}

@@ -33,7 +33,7 @@ public class BuffData : MonoBehaviour
     public void CloudBuff(int lane,int secondLane)
     {
         var cardManager = CreateCardManager();
-        cardManager.Skill(lane, secondLane);        
+        //cardManager.Skill(lane, secondLane);        
     }
 
     public void OceanBuff(int lane,int secondLane)

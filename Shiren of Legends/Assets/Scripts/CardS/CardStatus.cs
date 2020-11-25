@@ -13,18 +13,16 @@ public class CardStatus : MonoBehaviour
     public bool IsStun { get; set; }
     private int myShield;
 
-    private int lane;
-    public int SecondLane { get; set; }
     public bool Player { get; private set; }
+    public CardLanes CardLanes { get; set; }
 
     public bool IsOcean { get; set; }
 
-    public void Create(int ID, int i, int j, bool player)
+    public void Create(int ID, bool player, CardLanes cardLanes)
     {
-        myID = ID;
-        lane = i;
-        SecondLane = j;
+        myID = ID;        
         this.Player = player;
+        CardLanes = cardLanes;
 
         var CardDate = GameObject.Find(nameof(CardData));
         var cardDate = CardDate.GetComponent<CardData>();
@@ -49,7 +47,7 @@ public class CardStatus : MonoBehaviour
         buffCount++;
         var BuffManagerObj = GameObject.Find(nameof(BuffManager));
         var buffManager = BuffManagerObj.GetComponent<BuffManager>();
-        buffManager.Buff(lane, SecondLane, Player);
+        buffManager.Buff(CardLanes.X, CardLanes.Y, Player);
     }
 
     private void ColorChange()
@@ -132,14 +130,14 @@ public class CardStatus : MonoBehaviour
         var card = this.gameObject.GetComponent<IHasSlain>();
         if (card != null)
         {
-            var canSlainSkill = card.HasSlain(lane, SecondLane, Player);
+            var canSlainSkill = card.HasSlain(CardLanes, Player);
             if (!canSlainSkill)
                 return;
         }
 
         var CardManager = GameObject.Find("CardManager");
         var cardManager = CardManager.GetComponent<CardManager>();
-        cardManager.Destroyer(lane, SecondLane);
+        cardManager.Destroyer(CardLanes);
     }
 
     [SerializeField] Text Text = null;

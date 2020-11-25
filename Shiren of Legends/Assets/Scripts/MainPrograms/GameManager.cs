@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
             faith = (int)EnumFaith.Startup;
 
         NarrationManager.SetSerif(faith);
-        //SoundManager.PlaySound(3);
     }
 
     private void FaithUpdate()
@@ -62,8 +61,8 @@ public class GameManager : MonoBehaviour
         SoundManager.PlaySound(1);
 
         if (turnNum % 5 == 0)
-        {
-            CardManager.SummonMonster(Random.Range(0,5), 3, 3);
+        {            
+            CardManager.SummonMonster(Random.Range(0, 5), new CardLanes { X = 3, Y = 3 });
         }
         NextFaith();
     }
@@ -145,11 +144,11 @@ public class GameManager : MonoBehaviour
     {
         if (!turn)
         {
-            CardManager.Summon(i, 0, cardID, turn);
+            CardManager.Summon(new CardLanes { X = i, Y = 0 }, cardID, turn);
         }
         else if (turn)
-        {
-            CardManager.Summon(i, 6, cardID, turn);
+        { 
+            CardManager.Summon(new CardLanes { X = i, Y = 6 }, cardID, turn);
         }
         SoundManager.PlaySound(2);
     }
