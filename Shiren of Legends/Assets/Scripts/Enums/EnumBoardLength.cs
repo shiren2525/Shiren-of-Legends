@@ -1,6 +1,8 @@
 ﻿public enum EnumBoardLength
 {
-    MinBoardLength,
-    MaxBoardLengthY = 3,
-    MaxBoardLengthX = 6,
+    MinBoard,
+    MaxBoardY = 3,
+    MaxBoardLengthY = 4,
+    MaxBoardX = 6,
+    MaxBoardLengthX = 7,
 }

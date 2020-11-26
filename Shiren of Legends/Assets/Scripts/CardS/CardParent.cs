@@ -11,7 +11,7 @@ public class CardParent : MonoBehaviour
 
         for (int i = 0; i < cardManager.BoardList.GetLength(0); i++)
         {
-            for (int j = 1; j < cardManager.BoardList.GetLength(1); j++)
+            for (int j = 0; j < cardManager.BoardList.GetLength(1); j++)
             {
                 if (cardManager.BoardList[i, j] == null)
                     continue;
@@ -22,9 +22,9 @@ public class CardParent : MonoBehaviour
 
                 var enemyPlayer = cardManager.TurnPlayerList[i, j];
 
-                if (func(enemyPlayer, i))
+                if (func(enemyPlayer, j))
                 {
-                    yield return new SendCard { Lane = i, Player = enemyPlayer, CardStatus = card };
+                    yield return new SendCard { Lane = j, Player = enemyPlayer, CardStatus = card };
                 }
             }
         }

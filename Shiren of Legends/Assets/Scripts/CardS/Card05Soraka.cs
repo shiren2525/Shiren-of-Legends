@@ -5,7 +5,7 @@
         var cardStatus = this.gameObject.GetComponent<CardStatus>();
         var myPlayer = cardStatus.Player;
 
-        var fullSearch = FullSearch((enemyPlayer,enemyLane) => enemyPlayer == myPlayer);
+        var fullSearch = FullSearch((enemyPlayer, enemyLane) => enemyPlayer == myPlayer);
         foreach (var card in fullSearch)
         {
             card.CardStatus.AddHeal((int)(cardStatus.MyAD * cardStatus.MyRatio));

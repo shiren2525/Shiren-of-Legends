@@ -60,12 +60,29 @@ public class GameManager : MonoBehaviour
         TextManager.SetPanel(turn);
         SoundManager.PlaySound(1);
 
+        SummonMonster((int)EnumBoardLength.MaxBoardY);
+
+        NextFaith();
+    }
+
+    private void SummonMonster(int laneY)
+    {
         if (turnNum % 5 == 0)
         {
-            CardManager.SummonMonster(Random.Range(0, 5), 
-                new CardLanes { X = (int)EnumBoardLength.MaxBoardLengthX / 2, Y = (int)EnumBoardLength.MaxBoardLengthY });
+            if (laneY < 0)
+                return;
+
+            var cardLanes = new CardLanes { X = (int)EnumBoardLength.MaxBoardX / 2, Y = laneY };
+            var canSummon = CardManager.CheckCanSummon(cardLanes);
+            if (!canSummon)
+            {
+                SummonMonster(--laneY);
+            }
+            else if (canSummon)
+            {
+                CardManager.SummonMonster(Random.Range(0, 5), cardLanes);
+            }
         }
-        NextFaith();
     }
 
     private void Draw()
@@ -102,54 +119,64 @@ public class GameManager : MonoBehaviour
 
     private void SelectLane()
     {
-        int val;
+        int laneY;
         if (Input.GetKeyDown(KeyCode.Q) || IsTimeLimit)
         {
             IsTimeLimit = false;
-            val = 0;
+            laneY = 0;
             End();
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            val = 1;
+            laneY = 1;
             End();
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            val = 2;
+            laneY = 2;
             End();
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            val = 3;
+            laneY = 3;
             End();
         }
 
         void End()
         {
-            var canSummon = CardManager.CheckCanSummon(val, turn);
+            var laneX = 0;
+            if (turn)
+            {
+                laneX = (int)EnumBoardLength.MaxBoardX;
+            }
+            else if (!turn)
+            {
+                laneX = (int)EnumBoardLength.MinBoard;
+            }
+
+            var canSummon = CardManager.CheckCanSummon(new CardLanes { X = laneX, Y = laneY });
             if (!canSummon)
             {
                 faith = (int)EnumFaith.Summon;
             }
             else if (canSummon)
             {
-                Summon(val, handID);
+                Summon(laneY, handID);
                 TimeBarController.StopCoroutine();
                 NextFaith();
             }
         }
     }
 
-    private void Summon(int i, int cardID)
+    private void Summon(int laneY, int cardID)
     {
         if (!turn)
         {
-            CardManager.Summon(new CardLanes { X = i, Y = (int)EnumBoardLength.MinBoardLength }, cardID, turn);
+            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MinBoard, Y = laneY }, cardID, turn);
         }
         else if (turn)
         {
-            CardManager.Summon(new CardLanes { X = i, Y = (int)EnumBoardLength.MaxBoardLengthX }, cardID, turn);
+            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, cardID, turn);
         }
         SoundManager.PlaySound(2);
     }

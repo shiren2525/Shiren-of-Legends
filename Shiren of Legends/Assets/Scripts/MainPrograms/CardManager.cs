@@ -8,8 +8,8 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject[] cardObjList = new GameObject[8];
     [SerializeField] GameObject[] monsterObjList = new GameObject[5];
     [SerializeField] Transform[] transformsHnad = new Transform[2];
-    public GameObject[,] BoardList { get; private set; } = new GameObject[4, 7];
-    public bool[,] TurnPlayerList { get; private set; } = new bool[4, 7];
+    public GameObject[,] BoardList { get; private set; } = new GameObject[(int)EnumBoardLength.MaxBoardLengthX, (int)EnumBoardLength.MaxBoardLengthY];
+    public bool[,] TurnPlayerList { get; private set; } = new bool[(int)EnumBoardLength.MaxBoardLengthX, (int)EnumBoardLength.MaxBoardLengthY];
     private readonly GameObject[] hand = new GameObject[2];
 
     public void Draw(int cardID, int cardID1)
@@ -24,17 +24,9 @@ public class CardManager : MonoBehaviour
         Destroy(hand[1]);
     }
 
-    public bool CheckCanSummon(int lane, bool turn)
+    public bool CheckCanSummon(CardLanes cardLanes)
     {
-        if (turn)
-        {
-            return BoardList[lane, (int)EnumBoardLength.MaxBoardLengthX] == null;
-        }
-        else if (!turn)
-        {
-            return BoardList[lane, (int)EnumBoardLength.MinBoardLength] == null;
-        }
-        return turn;
+        return BoardList[cardLanes.X, cardLanes.Y] == null;
     }
 
     public void Summon(CardLanes cardLanes, int cardID, bool turn)
@@ -51,7 +43,7 @@ public class CardManager : MonoBehaviour
         if (card == null)
             return;
 
-        card.ActiveSkill(cardLanes.X);
+        card.ActiveSkill(cardLanes.Y);
     }
 
     private void PassiveSkill(CardLanes cardLanes)
@@ -65,27 +57,28 @@ public class CardManager : MonoBehaviour
 
     public void SummonMonster(int ID, CardLanes cardLanes)
     {
-        BoardList[cardLanes.X, cardLanes.Y] = Instantiate(monsterObjList[ID], BoardManager.TransformList[cardLanes.X, cardLanes.Y].position, Quaternion.identity) as GameObject;
+        BoardList[cardLanes.X, cardLanes.Y] =
+            Instantiate(monsterObjList[ID], BoardManager.TransformList[cardLanes.X, cardLanes.Y].position, Quaternion.identity) as GameObject;
         BoardList[cardLanes.X, cardLanes.Y].GetComponent<MonsterStatus>().Create(ID, cardLanes);
     }
 
     public void Movement(int gap, bool turn)
     {
-        for (int i = 0; i < BoardList.GetLength(0); i++)
+        for (int i = 0; i < BoardList.GetLength(1); i++)
         {
             // 連続で移動しないために探索順を分ける必要がある
             if (turn)
             {
-                for (int j = 0; j < BoardList.GetLength(1); j++)
+                for (int j = 0; j < BoardList.GetLength(0); j++)
                 {
-                    Movement(new CardLanes { X = i, Y = j }, j + gap);
+                    Movement(new CardLanes { X = j, Y = i }, j + gap);
                 }
             }
             else if (!turn)
             {
-                for (int j = BoardList.GetLength(1) - 1; j >= 0; j--)
+                for (int j = BoardList.GetLength(0) - 1; j >= 0; j--)
                 {
-                    Movement(new CardLanes { X = i, Y = j }, j + gap);
+                    Movement(new CardLanes { X = j, Y = i }, j + gap);
                 }
             }
         }
@@ -107,25 +100,25 @@ public class CardManager : MonoBehaviour
             {
                 PassiveSkill(cardLanes);
 
-                if (nextBoard == (int)EnumBoardLength.MinBoardLength || nextBoard == (int)EnumBoardLength.MaxBoardLengthX)
+                if (nextBoard == (int)EnumBoardLength.MinBoard || nextBoard == (int)EnumBoardLength.MaxBoardX)
                 {
                     PlayerStatus.AddDirectDamage(card.MyAD, turn);
                     Destroyer(cardLanes);
                     return;
                 }
-                else if (BoardList[cardLanes.X, nextBoard] == null)
+                else if (BoardList[nextBoard, cardLanes.Y] == null)
                 {
                     JustMovement(cardLanes, nextBoard);
                 }
-                else if (BoardList[cardLanes.X, nextBoard].GetComponent<CardStatus>())
+                else if (BoardList[nextBoard, cardLanes.Y].GetComponent<CardStatus>())
                 {
-                    Battle<CardStatus>(cardLanes, nextBoard, CreateEnemy<CardStatus>(cardLanes.X, nextBoard));
+                    Battle<CardStatus>(cardLanes, nextBoard, CreateEnemy<CardStatus>(nextBoard, cardLanes.Y));
                     return;
                 }
-                else if (BoardList[cardLanes.X, nextBoard].GetComponent<MonsterStatus>())
+                else if (BoardList[nextBoard, cardLanes.Y].GetComponent<MonsterStatus>())
                 {
                     // TODO slain monster
-                    BattleMonster<MonsterStatus>(cardLanes, nextBoard, CreateEnemy<MonsterStatus>(cardLanes.X, nextBoard), turn);
+                    BattleMonster<MonsterStatus>(cardLanes, nextBoard, CreateEnemy<MonsterStatus>(nextBoard, cardLanes.Y), turn);
                     return;
                 }
             }
@@ -134,8 +127,8 @@ public class CardManager : MonoBehaviour
 
     public Type CreateEnemy<Type>(int lane, int nextBoard)
     {
-        var enemy = BoardList[lane, nextBoard].GetComponent<Type>();
-        return enemy;
+        //var enemy = BoardList[lane, nextBoard].GetComponent<Type>();
+        return BoardList[lane, nextBoard].GetComponent<Type>();
     }
 
     public void Battle<Type>(CardLanes cardLanes, int nextBoard, Type type) where Type : CardStatus
@@ -158,7 +151,7 @@ public class CardManager : MonoBehaviour
         else
         {
             Destroyer(cardLanes);
-            Destroyer(new CardLanes { X = cardLanes.X, Y = nextBoard });
+            Destroyer(new CardLanes { X = nextBoard, Y = cardLanes.Y });
         }
     }
 
@@ -188,7 +181,7 @@ public class CardManager : MonoBehaviour
 
     public void JustMovement(CardLanes cardLanes, int nextBoard)
     {
-        if (BoardList[cardLanes.X, nextBoard] != null)
+        if (BoardList[nextBoard, cardLanes.Y] != null)
             Destroyer(cardLanes);
 
         if (BoardList[cardLanes.X, cardLanes.Y] == null)
@@ -198,10 +191,10 @@ public class CardManager : MonoBehaviour
         if (cardStatus == null)
             return;
 
-        BoardList[cardLanes.X, cardLanes.Y].transform.position = BoardManager.TransformList[cardLanes.X, nextBoard].position;
-        BoardList[cardLanes.X, nextBoard] = BoardList[cardLanes.X, cardLanes.Y];
-        TurnPlayerList[cardLanes.X, nextBoard] = TurnPlayerList[cardLanes.X, cardLanes.Y];
-        cardStatus.CardLanes.Y = nextBoard;
+        BoardList[cardLanes.X, cardLanes.Y].transform.position = BoardManager.TransformList[nextBoard, cardLanes.Y].position;
+        BoardList[nextBoard, cardLanes.Y] = BoardList[cardLanes.X, cardLanes.Y];
+        TurnPlayerList[nextBoard, cardLanes.Y] = TurnPlayerList[cardLanes.X, cardLanes.Y];
+        cardStatus.CardLanes.X = nextBoard;
         BoardList[cardLanes.X, cardLanes.Y] = null;
         TurnPlayerList[cardLanes.X, cardLanes.Y] = false;
     }
