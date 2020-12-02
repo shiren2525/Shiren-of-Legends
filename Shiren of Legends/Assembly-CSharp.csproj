@@ -81,11 +81,14 @@
     <Compile Include="Assets\Scripts\CardS\Interfaces\ILifeSteal.cs" />
     <Compile Include="Assets\Scripts\CardS\Interfaces\IPassiveSkill.cs" />
     <Compile Include="Assets\Scripts\CardS\Interfaces\ISkill.cs" />
+    <Compile Include="Assets\Scripts\Enums\EnumAudioClips.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumBoardLength.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumCardID.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumFaith.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumlSkillType.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumMonster.cs" />
+    <Compile Include="Assets\Scripts\Enums\EnumNarrationTexts.cs" />
+    <Compile Include="Assets\Scripts\Enums\EnumNumbers.cs" />
     <Compile Include="Assets\Scripts\MainPrograms\BoardManager.cs" />
     <Compile Include="Assets\Scripts\MainPrograms\CardManager.cs" />
     <Compile Include="Assets\Scripts\MainPrograms\GameManager.cs" />

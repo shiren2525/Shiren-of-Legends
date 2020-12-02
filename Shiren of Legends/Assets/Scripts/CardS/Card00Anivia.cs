@@ -7,7 +7,7 @@ public class Card00Anivia : MonoBehaviour, IHasSlain
     public bool HasSlain(CardLanes cardLanes, bool player)
     {
         if (!canRespawn)
-            return true;
+            return canRespawn;
 
         var CardManager = GameObject.Find("CardManager");
         var cardManager = CardManager.GetComponent<CardManager>();
@@ -23,6 +23,6 @@ public class Card00Anivia : MonoBehaviour, IHasSlain
             cardManager.JustMovement(cardLanes, (int)EnumBoardLength.MinBoard);
         }
         canRespawn = !canRespawn;
-        return false;
+        return true;
     }
 }

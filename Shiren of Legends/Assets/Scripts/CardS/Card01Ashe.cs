@@ -9,6 +9,7 @@
         foreach (var card in fullSearch)
         {
             card.CardStatus.AddDamage((int)(cardStatus.MyAD * cardStatus.MyRatio), (int)EnumSkillType.SkillShot);
+            card.CardStatus.IsStun = true;
         }
     }
 }

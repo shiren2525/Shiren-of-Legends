@@ -92,19 +92,22 @@ public class CardManager : MonoBehaviour
                 return;
 
             var card = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
-            if (card.IsStun)
-                return;
 
             // 自分のカードだけを動かすため
             if (turn && TurnPlayerList[cardLanes.X, cardLanes.Y] || !turn && !TurnPlayerList[cardLanes.X, cardLanes.Y])
             {
+                if (card.IsStun)
+                {
+                    card.IsStun = false;
+                    return;
+                }
+
                 PassiveSkill(cardLanes);
 
                 if (nextBoard == (int)EnumBoardLength.MinBoard || nextBoard == (int)EnumBoardLength.MaxBoardX)
                 {
                     PlayerStatus.AddDirectDamage(card.MyAD, turn);
                     Destroyer(cardLanes);
-                    return;
                 }
                 else if (BoardList[nextBoard, cardLanes.Y] == null)
                 {
@@ -112,14 +115,14 @@ public class CardManager : MonoBehaviour
                 }
                 else if (BoardList[nextBoard, cardLanes.Y].GetComponent<CardStatus>())
                 {
+                    if (turn && TurnPlayerList[nextBoard, cardLanes.Y] || !turn && !TurnPlayerList[nextBoard, cardLanes.Y])
+                        return;
+
                     Battle<CardStatus>(cardLanes, nextBoard, CreateEnemy<CardStatus>(nextBoard, cardLanes.Y));
-                    return;
                 }
                 else if (BoardList[nextBoard, cardLanes.Y].GetComponent<MonsterStatus>())
                 {
-                    // TODO slain monster
                     BattleMonster<MonsterStatus>(cardLanes, nextBoard, CreateEnemy<MonsterStatus>(nextBoard, cardLanes.Y), turn);
-                    return;
                 }
             }
         }
@@ -127,7 +130,6 @@ public class CardManager : MonoBehaviour
 
     public Type CreateEnemy<Type>(int lane, int nextBoard)
     {
-        //var enemy = BoardList[lane, nextBoard].GetComponent<Type>();
         return BoardList[lane, nextBoard].GetComponent<Type>();
     }
 
@@ -194,9 +196,11 @@ public class CardManager : MonoBehaviour
         BoardList[cardLanes.X, cardLanes.Y].transform.position = BoardManager.TransformList[nextBoard, cardLanes.Y].position;
         BoardList[nextBoard, cardLanes.Y] = BoardList[cardLanes.X, cardLanes.Y];
         TurnPlayerList[nextBoard, cardLanes.Y] = TurnPlayerList[cardLanes.X, cardLanes.Y];
-        cardStatus.CardLanes.X = nextBoard;
+        
         BoardList[cardLanes.X, cardLanes.Y] = null;
         TurnPlayerList[cardLanes.X, cardLanes.Y] = false;
+        
+        cardStatus.CardLanes.X = nextBoard;
     }
 
     public void Destroyer(CardLanes cardLanes)

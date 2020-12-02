@@ -41,9 +41,9 @@ public class NarrationManager : MonoBehaviour
     {
         NarrationText.text = showSerifList[num];
 
-        await Task.Delay(TimeSpan.FromSeconds(0.5));
+        await Task.Delay(TimeSpan.FromSeconds(0.8));
 
-        if (showSerifList.Count > num + 1 && showSerifList.Count < 8)
+        if (showSerifList.Count > num + 1 && showSerifList.Count < 4)
         {
             BeginText(++num);
         }

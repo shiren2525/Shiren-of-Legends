@@ -20,7 +20,7 @@ public class CardStatus : MonoBehaviour
 
     public void Create(int ID, bool player, CardLanes cardLanes)
     {
-        myID = ID;        
+        myID = ID;
         this.Player = player;
         CardLanes = cardLanes;
 
@@ -131,10 +131,14 @@ public class CardStatus : MonoBehaviour
         if (card != null)
         {
             var canSlainSkill = card.HasSlain(CardLanes, Player);
-            if (!canSlainSkill)
+            if (canSlainSkill)
+            {
+                Debug.Log(canSlainSkill);
                 return;
+            }
         }
 
+        Debug.Log("Destroy: " + this.name);
         var CardManager = GameObject.Find("CardManager");
         var cardManager = CardManager.GetComponent<CardManager>();
         cardManager.Destroyer(CardLanes);

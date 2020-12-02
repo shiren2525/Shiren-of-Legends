@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
         faith++;
         if (faith > (int)EnumFaith.TurnChange)
             faith = (int)EnumFaith.Startup;
-
-        NarrationManager.SetSerif(faith);
     }
 
     private void FaithUpdate()
@@ -58,7 +56,9 @@ public class GameManager : MonoBehaviour
     {
         TextManager.SetTurnNum(++turnNum);
         TextManager.SetPanel(turn);
-        SoundManager.PlaySound(1);
+        SoundManager.PlaySound((int)EnumAudioClips.NextTurn);
+        NarrationManager.SetSerif((int)EnumNarrationTexts.NextPlayersTurn);
+        Debug.Log("<color=red> --------------------------- </color>");
 
         SummonMonster((int)EnumBoardLength.MaxBoardY);
 
@@ -87,10 +87,11 @@ public class GameManager : MonoBehaviour
 
     private void Draw()
     {
-        hand = Random.Range(0, 8);
-        hand1 = Random.Range(0, 8);
+        hand = Random.Range(0, (int)EnumNumbers.Cards);
+        hand1 = Random.Range(0, (int)EnumNumbers.Cards);        
         CardManager.Draw(hand, hand1);
         TimeBarController.StartCoroutine();
+        NarrationManager.SetSerif((int)EnumNarrationTexts.SelectHand);
         NextFaith();
     }
 
@@ -110,7 +111,8 @@ public class GameManager : MonoBehaviour
         void End()
         {
             CardManager.DeleteHand();
-            SoundManager.PlaySound(0);
+            SoundManager.PlaySound((int)EnumAudioClips.Draw);
+            NarrationManager.SetSerif((int)EnumNarrationTexts.SelectLane);
             TimeBarController.StopCoroutine();
             TimeBarController.StartCoroutine();
             NextFaith();
@@ -178,7 +180,8 @@ public class GameManager : MonoBehaviour
         {
             CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, cardID, turn);
         }
-        SoundManager.PlaySound(2);
+        SoundManager.PlaySound((int)EnumAudioClips.SpecialSummon);
+        NarrationManager.SetSerif((int)EnumNarrationTexts.Skill);
     }
 
     private void Skill()
