@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
             }
             else if (canSummon)
             {
-                CardManager.SummonMonster(Random.Range(0, 5), cardLanes);
+                CardManager.SummonMonster(Random.Range(0, 4), cardLanes);
             }
         }
     }

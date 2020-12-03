@@ -106,7 +106,7 @@ public class CardManager : MonoBehaviour
 
                 if (nextBoard == (int)EnumBoardLength.MinBoard || nextBoard == (int)EnumBoardLength.MaxBoardX)
                 {
-                    PlayerStatus.AddDirectDamage(card.MyAD, turn);
+                    PlayerStatus.AddDirectDamage(card.MyAD, turn,cardLanes.Y);
                     Destroyer(cardLanes);
                 }
                 else if (BoardList[nextBoard, cardLanes.Y] == null)

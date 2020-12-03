@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CardStatus : MonoBehaviour
 {
     private int myID;
-    public int MyMaxHP { get; private set; }
+    public int MyMaxHP { get; set; }
     public int MyHP { get; set; }
     public int MyAD { get; set; }
     public float MyRatio { get; private set; }
@@ -32,7 +32,6 @@ public class CardStatus : MonoBehaviour
         MyMaxHP = MyHP;
 
         CreateBuff();
-
 
         ColorChange();
         SetText();
@@ -75,14 +74,15 @@ public class CardStatus : MonoBehaviour
                 checked
                 {
                     MyHP -= (damage - myShield);
+                    myShield = 0;
                 }
             }
             catch (OverflowException)
             {
                 Debug.Log("オーバーフロー");
             }
-            myShield = 0;
         }
+        Debug.Log("Dameged HP:" + MyHP + " / " + this.name);
 
         CheckArrive(damageType);
         SetText();
@@ -118,10 +118,14 @@ public class CardStatus : MonoBehaviour
 
     public void AddShield(int shield)
     {
-        if (myShield >= 2)
-            return;
-
-        myShield += shield;
+        if (myShield + shield >= 2)
+        {
+            myShield = 2;
+        }
+        else
+        {
+            myShield += shield;
+        }
         SetText();
     }
 
@@ -131,21 +135,17 @@ public class CardStatus : MonoBehaviour
         if (card != null)
         {
             var canSlainSkill = card.HasSlain(CardLanes, Player);
-            if (canSlainSkill)
-            {
-                Debug.Log(canSlainSkill);
+            if (canSlainSkill && GetComponent<Card00Anivia>())
                 return;
-            }
         }
 
-        Debug.Log("Destroy: " + this.name);
         var CardManager = GameObject.Find("CardManager");
         var cardManager = CardManager.GetComponent<CardManager>();
         cardManager.Destroyer(CardLanes);
     }
 
     [SerializeField] Text Text = null;
-    private void SetText()
+    public void SetText()
     {
         Text.text = MyAD.ToString() + "/" + MyHP.ToString() + "+" + myShield.ToString();
     }

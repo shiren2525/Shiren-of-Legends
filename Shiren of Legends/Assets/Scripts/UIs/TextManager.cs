@@ -7,6 +7,14 @@ public class TextManager : MonoBehaviour
     [SerializeField] Text textPlayer0HP = null;
     [SerializeField] Text textPlayer1HP = null;
 
+    [SerializeField] Text[] textTower0HP = new Text[4];
+    [SerializeField] Text[] textTower1HP = new Text[4];
+
+    [SerializeField] SpriteRenderer[] spriteRenderers = new SpriteRenderer[4];
+    [SerializeField] SpriteRenderer[] spriteRenderers1 = new SpriteRenderer[4];
+
+    [SerializeField] Sprite spriteBlack = null;
+
     [SerializeField] Image ImagePanel0 = null;
     [SerializeField] Image ImagePanel1 = null;
 
@@ -21,6 +29,28 @@ public class TextManager : MonoBehaviour
         else if (!player)
         {
             textPlayer1HP.text = "HP: " + health.ToString();
+        }
+    }
+
+    public void SetTowerHPText(int health, bool player, int laneY)
+    {
+        if (player)
+        {
+            textTower0HP[laneY].text = "HP: " + health.ToString();
+            if (health <= 0)
+            {
+                textTower0HP[laneY].text = "";
+                spriteRenderers[laneY].sprite = spriteBlack;
+            }
+        }
+        else if (!player)
+        {
+            textTower1HP[laneY].text = "HP: " + health.ToString();
+            if (health <= 0)
+            {
+                textTower1HP[laneY].text = "";
+                spriteRenderers1[laneY].sprite = spriteBlack;
+            }
         }
     }
 

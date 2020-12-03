@@ -12,6 +12,6 @@ public class Card04Vladimir : MonoBehaviour, IPassiveSkill, ILifeSteal
     {
         var cardStatus = this.gameObject.GetComponent<CardStatus>();
         cardStatus.AddHeal((int)(cardStatus.MyAD));
-        cardStatus.MyAD += (int)(cardStatus.MyAD * cardStatus.MyRatio);        
+        cardStatus.MyAD += (int)(cardStatus.MyAD * cardStatus.MyRatio);
     }
 }

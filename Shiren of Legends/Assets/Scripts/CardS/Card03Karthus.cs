@@ -17,6 +17,7 @@
             card.CardStatus.AddDamage((int)(cardStatus.MyAD * cardStatus.MyRatio), (int)EnumSkillType.AreaOfEffect);
         }
 
+        canSkill = !canSkill;
         return true;
     }
 }

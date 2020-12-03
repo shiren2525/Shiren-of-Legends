@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class Card07Yasuo : MonoBehaviour, IPassiveSkill
+﻿public class Card07Yasuo : CardParent, IPassiveSkill
 {
     public void PassiveSkill()
     {

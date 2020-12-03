@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Buffs\BuffManager.cs" />
     <Compile Include="Assets\Scripts\CardS\Card00Anivia.cs" />
     <Compile Include="Assets\Scripts\CardS\Card01Ashe.cs" />
+    <Compile Include="Assets\Scripts\CardS\Card02Shyvana.cs" />
     <Compile Include="Assets\Scripts\CardS\Card03Karthus.cs" />
     <Compile Include="Assets\Scripts\CardS\Card04Vladimir.cs" />
     <Compile Include="Assets\Scripts\CardS\Card05Soraka.cs" />
