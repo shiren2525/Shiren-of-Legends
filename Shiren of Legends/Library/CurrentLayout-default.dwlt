@@ -112,10 +112,10 @@ MonoBehaviour:
     y: 30
     width: 1458
     height: 755
-  m_MinSize: {x: 538, y: 494}
+  m_MinSize: {x: 713, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 66
+  controlID: 31
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -161,14 +161,14 @@ MonoBehaviour:
     y: 0
     width: 399
     height: 755
-  m_MinSize: {x: 104, y: 122}
+  m_MinSize: {x: 279, y: 72}
   m_MaxSize: {x: 4004, y: 4022}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
   - {fileID: 14}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 494}
   m_MaxSize: {x: 10002, y: 14044}
   vertical: 1
-  controlID: 67
+  controlID: 95
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -358,9 +358,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: fc2c0000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 72fbffff
+      m_SelectedIDs: b0340000
+      m_LastClickedID: 13488
+      m_ExpandedIDs: 72fbffff74350000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -420,7 +420,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
-  m_LastInspectedObjectInstanceID: 10744
+  m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
 --- !u!114 &14
 MonoBehaviour:
@@ -612,19 +612,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Buffs
+    - Assets/Scripts/UIs
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Buffs
+  - Assets/Scripts/UIs
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Document\GitHub\Shiren-of-Legends\Shiren of Legends
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 0a300000
-    m_LastClickedID: 12298
+    m_SelectedIDs: f42f0000
+    m_LastClickedID: 12276
     m_ExpandedIDs: 00000000ae2d00009c2f0000a42f00001831000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
