@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     private bool turn = false;
     private int handID = 0;
     private int faith = 0;
-    private int hand = 0, hand1 = 0;
+    private int cardID = 0;
+    private int cardID0 = 0, cardID1 = 0;
     private int turnNum = 0;
 
     public bool IsTimeLimit { get; set; }
@@ -88,9 +89,9 @@ public class GameManager : MonoBehaviour
 
     private void Draw()
     {
-        hand = Random.Range(0, (int)EnumNumbers.Cards);
-        hand1 = Random.Range(0, (int)EnumNumbers.Cards);        
-        CardManager.Draw(hand, hand1);
+        cardID0 = Random.Range(0, (int)EnumNumbers.Cards);
+        cardID1 = Random.Range(0, (int)EnumNumbers.Cards);
+        CardManager.Draw(cardID0, cardID1);
         TimeBarController.StartCoroutine();
         NarrationManager.SetSerif((int)EnumNarrationTexts.SelectHand);
         NextFaith();
@@ -101,17 +102,26 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) || IsTimeLimit)
         {
             IsTimeLimit = false;
-            handID = hand;
+            handID = 0;
             End();
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            handID = hand1;
+            handID = 1;
             End();
         }
         void End()
         {
-            CardManager.DeleteHand();
+            if (handID == 0)
+            {
+                cardID = cardID0;
+                CardManager.DeleteHand(1);
+            }
+            else if (handID == 1)
+            {
+                cardID = cardID1;
+                CardManager.DeleteHand(0);
+            }
             SoundManager.PlaySound((int)EnumAudioClips.Draw);
             NarrationManager.SetSerif((int)EnumNarrationTexts.SelectLane);
             TimeBarController.StopCoroutine();
@@ -164,22 +174,22 @@ public class GameManager : MonoBehaviour
             }
             else if (canSummon)
             {
-                Summon(laneY, handID);
+                Summon(laneY);
                 TimeBarController.StopCoroutine();
                 NextFaith();
             }
         }
     }
 
-    private void Summon(int laneY, int cardID)
+    private void Summon(int laneY)
     {
         if (!turn)
         {
-            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MinBoard, Y = laneY }, cardID, turn);
+            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MinBoard, Y = laneY }, handID, cardID, turn);
         }
         else if (turn)
         {
-            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, cardID, turn);
+            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, handID, cardID, turn);
         }
         SoundManager.PlaySound((int)EnumAudioClips.SpecialSummon);
         NarrationManager.SetSerif((int)EnumNarrationTexts.Skill);

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
@@ -18,10 +17,9 @@ public class CardManager : MonoBehaviour
         hand[1] = Instantiate(cardObjList[cardID1], transformsHnad[1].position, Quaternion.identity);
     }
 
-    public void DeleteHand()
+    public void DeleteHand(int handID)
     {
-        Destroy(hand[0]);
-        Destroy(hand[1]);
+        Destroy(hand[handID]);
     }
 
     public bool CheckCanSummon(CardLanes cardLanes)
@@ -29,9 +27,10 @@ public class CardManager : MonoBehaviour
         return BoardList[cardLanes.X, cardLanes.Y] == null;
     }
 
-    public void Summon(CardLanes cardLanes, int cardID, bool turn)
+    public void Summon(CardLanes cardLanes, int handID, int cardID, bool turn)
     {
-        BoardList[cardLanes.X, cardLanes.Y] = Instantiate(cardObjList[cardID], BoardManager.TransformList[cardLanes.X, cardLanes.Y].position, Quaternion.identity) as GameObject;
+        BoardList[cardLanes.X, cardLanes.Y] = hand[handID];
+        BoardList[cardLanes.X, cardLanes.Y].transform.position = BoardManager.TransformList[cardLanes.X, cardLanes.Y].position;
         BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>().Create(cardID, turn, cardLanes);
         TurnPlayerList[cardLanes.X, cardLanes.Y] = turn;
         Skill(cardLanes);
@@ -184,7 +183,7 @@ public class CardManager : MonoBehaviour
     public void JustMovement(CardLanes cardLanes, int nextBoard)
     {
         if (BoardList[nextBoard, cardLanes.Y] != null)
-            Destroyer(cardLanes);
+            return;
 
         if (BoardList[cardLanes.X, cardLanes.Y] == null)
             return;
