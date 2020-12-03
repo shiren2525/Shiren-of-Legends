@@ -40,6 +40,11 @@ public class PlayerStatus : MonoBehaviour
             {
                 player0HP -= damage;
                 TextManager.SetText(player0HP, player);
+                if (player0HP <= 0)
+                {
+                    var loadScene = new LoadScene();
+                    loadScene.ResetGames();
+                }
             }
         }
         else if (!player)
@@ -53,6 +58,11 @@ public class PlayerStatus : MonoBehaviour
             {
                 player1HP -= damage;
                 TextManager.SetText(player1HP, player);
+                if (player1HP <= 0)
+                {
+                    var loadScene = new LoadScene();
+                    loadScene.ResetGames();
+                }
             }
         }
     }

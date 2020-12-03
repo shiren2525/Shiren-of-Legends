@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\MainPrograms\BoardManager.cs" />
     <Compile Include="Assets\Scripts\MainPrograms\CardManager.cs" />
     <Compile Include="Assets\Scripts\MainPrograms\GameManager.cs" />
+    <Compile Include="Assets\Scripts\MainPrograms\LoadScene.cs" />
     <Compile Include="Assets\Scripts\MonsterS\MonsterData.cs" />
     <Compile Include="Assets\Scripts\MonsterS\MonsterStatus.cs" />
     <Compile Include="Assets\Scripts\Test.cs" />

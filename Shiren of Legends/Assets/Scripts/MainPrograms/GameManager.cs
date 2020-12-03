@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextManager TextManager = null;
     [SerializeField] private TimeBarController TimeBarController = null;
     [SerializeField] private NarrationManager NarrationManager = null;
+    [SerializeField] private LoadScene LoadScene = null;
     private bool turn = false;
     private int handID = 0;
     private int faith = 0;
@@ -210,8 +211,23 @@ public class GameManager : MonoBehaviour
         NextFaith();
     }
 
+    private void Start()
+    {
+        LoadScene = new LoadScene();
+        Application.targetFrameRate = 30;
+    }
+
     private void Update()
     {
         FaithUpdate();
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            LoadScene.ResetGames();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            LoadScene.ExitGames();
+        }
     }
 }
