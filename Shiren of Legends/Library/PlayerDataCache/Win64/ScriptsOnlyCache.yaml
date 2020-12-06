@@ -31,7 +31,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.TileDragAndDropManager
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -88,49 +87,49 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10068}
     - Class: 114
-      Script: {instanceID: 10310}
+      Script: {instanceID: 10312}
     - Class: 114
-      Script: {instanceID: 10338}
+      Script: {instanceID: 10340}
     - Class: 114
-      Script: {instanceID: 10524}
+      Script: {instanceID: 10526}
     - Class: 114
-      Script: {instanceID: 10562}
+      Script: {instanceID: 10564}
     - Class: 114
-      Script: {instanceID: 10632}
+      Script: {instanceID: 10634}
     - Class: 114
-      Script: {instanceID: 10652}
+      Script: {instanceID: 10654}
     - Class: 114
-      Script: {instanceID: 10742}
+      Script: {instanceID: 10744}
     - Class: 114
-      Script: {instanceID: 10792}
+      Script: {instanceID: 10794}
     - Class: 114
-      Script: {instanceID: 10920}
+      Script: {instanceID: 10922}
     - Class: 114
-      Script: {instanceID: 11002}
+      Script: {instanceID: 11004}
     - Class: 114
-      Script: {instanceID: 11086}
+      Script: {instanceID: 11088}
     - Class: 114
-      Script: {instanceID: 11182}
+      Script: {instanceID: 11184}
     - Class: 114
-      Script: {instanceID: 11186}
+      Script: {instanceID: 11188}
     - Class: 114
-      Script: {instanceID: 11274}
+      Script: {instanceID: 11276}
     - Class: 114
-      Script: {instanceID: 11284}
+      Script: {instanceID: 11286}
     - Class: 114
-      Script: {instanceID: 11310}
+      Script: {instanceID: 11312}
     - Class: 114
-      Script: {instanceID: 11336}
+      Script: {instanceID: 11338}
     - Class: 114
-      Script: {instanceID: 11458}
+      Script: {instanceID: 11460}
     - Class: 114
-      Script: {instanceID: 11508}
+      Script: {instanceID: 11510}
     - Class: 114
-      Script: {instanceID: 11566}
+      Script: {instanceID: 11568}
     - Class: 114
-      Script: {instanceID: 11600}
+      Script: {instanceID: 11602}
     - Class: 114
-      Script: {instanceID: 11622}
+      Script: {instanceID: 11624}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -715,4 +714,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Game_Exe/SoL/Shiren of Legends.exe
+  playerPath: D:/Game_Exe/SoL02/Shiren of Legends.exe
