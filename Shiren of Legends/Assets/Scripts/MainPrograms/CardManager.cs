@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class CardManager : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class CardManager : MonoBehaviour
     public GameObject[,] BoardList { get; private set; } = new GameObject[(int)EnumBoardLength.MaxBoardLengthX, (int)EnumBoardLength.MaxBoardLengthY];
     public bool[,] TurnPlayerList { get; private set; } = new bool[(int)EnumBoardLength.MaxBoardLengthX, (int)EnumBoardLength.MaxBoardLengthY];
     private readonly GameObject[] hand = new GameObject[2];
+    private int[] deckIDs = new int[8];
+
+    public void DeckCreator(List<GameObject> deckObjs, int[] deckIDs)
+    {
+        cardObjList = deckObjs.ToArray();
+        this.deckIDs = deckIDs;
+    }
 
     public void Draw(int cardID, int cardID1)
     {
@@ -27,11 +35,11 @@ public class CardManager : MonoBehaviour
         return BoardList[cardLanes.X, cardLanes.Y] == null;
     }
 
-    public void Summon(CardLanes cardLanes, int handID, int cardID, bool turn)
+    public void Summon(CardLanes cardLanes, int handID, bool turn)
     {
         BoardList[cardLanes.X, cardLanes.Y] = hand[handID];
         BoardList[cardLanes.X, cardLanes.Y].transform.position = BoardManager.TransformList[cardLanes.X, cardLanes.Y].position;
-        BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>().Create(cardID, turn, cardLanes);
+        BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>().Create(deckIDs[handID], turn, cardLanes);
         TurnPlayerList[cardLanes.X, cardLanes.Y] = turn;
         Skill(cardLanes);
     }

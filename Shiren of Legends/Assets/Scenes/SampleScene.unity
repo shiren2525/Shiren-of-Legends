@@ -273,6 +273,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17514072}
   m_CullTransparentMesh: 0
+--- !u!1 &37254709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37254711}
+  - component: {fileID: 37254710}
+  m_Layer: 0
+  m_Name: DeckCreator
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &37254710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37254709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1761bd67142f3a41ae6b3d40d4f6b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardManager: {fileID: 1525223296}
+  FullCards:
+  - {fileID: 4052096797411834533, guid: 30bc61e5b00085a4282e4403903a474d, type: 3}
+  - {fileID: 3960137520345836952, guid: 4006c88bc5ff80d4dad433525fcd2fc6, type: 3}
+  - {fileID: 7471690628054921329, guid: 9d646f233b3bc6946ab49684bdf82ec1, type: 3}
+  - {fileID: 2946698307754339188, guid: 6689dfc2cdfc5334ab2f504005a0642a, type: 3}
+  - {fileID: 3960137520345836952, guid: 03dcb1b1dbe60e24bbb38f426fd14a3e, type: 3}
+  - {fileID: 2737262208759378519, guid: f15f9c62fad8b2e47a7baf6a839a004c, type: 3}
+  - {fileID: 6640338973008512271, guid: ee15503bcf909ef4195d38dfe4c23070, type: 3}
+  - {fileID: 5621832499956403903, guid: 3e63fe9e52d78fd4e895ba0070508c05, type: 3}
+  aa: 0000000000000000000000000000000000000000000000000000000000000000
+--- !u!4 &37254711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37254709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43567372
 GameObject:
   m_ObjectHideFlags: 0

@@ -82,6 +82,8 @@
     <Compile Include="Assets\Scripts\CardS\Interfaces\ILifeSteal.cs" />
     <Compile Include="Assets\Scripts\CardS\Interfaces\IPassiveSkill.cs" />
     <Compile Include="Assets\Scripts\CardS\Interfaces\ISkill.cs" />
+    <Compile Include="Assets\Scripts\DeckBuild\DeckBuild.cs" />
+    <Compile Include="Assets\Scripts\DeckBuild\SetParentScript.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumAudioClips.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumBoardLength.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumCardID.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Assets\Scripts\Enums\EnumNumbers.cs" />
     <Compile Include="Assets\Scripts\MainPrograms\BoardManager.cs" />
     <Compile Include="Assets\Scripts\MainPrograms\CardManager.cs" />
+    <Compile Include="Assets\Scripts\MainPrograms\DeckCreator.cs" />
     <Compile Include="Assets\Scripts\MainPrograms\GameManager.cs" />
     <Compile Include="Assets\Scripts\MainPrograms\LoadScene.cs" />
     <Compile Include="Assets\Scripts\MonsterS\MonsterData.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="Assets\Scripts\UIs\TextManager.cs" />
     <Compile Include="Assets\Scripts\UIs\TimeBarController.cs" />
     <None Include="Assets\Resources\CardEffect.txt" />
+    <None Include="Assets\Resources\Decks.txt" />
     <None Include="Assets\Resources\NarrationList.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Document/GitHub/Shiren-of-Legends/Shiren of Legends/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

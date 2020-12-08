@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     private bool turn = false;
     private int handID = 0;
     private int faith = 0;
-    private int cardID = 0;
     private int cardID0 = 0, cardID1 = 0;
     private int turnNum = 0;
 
@@ -114,12 +113,10 @@ public class GameManager : MonoBehaviour
         {
             if (handID == 0)
             {
-                cardID = cardID0;
                 CardManager.DeleteHand(1);
             }
             else if (handID == 1)
             {
-                cardID = cardID1;
                 CardManager.DeleteHand(0);
             }
             SoundManager.PlaySound((int)EnumAudioClips.Draw);
@@ -185,11 +182,11 @@ public class GameManager : MonoBehaviour
     {
         if (!turn)
         {
-            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MinBoard, Y = laneY }, handID, cardID, turn);
+            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MinBoard, Y = laneY }, handID, turn);
         }
         else if (turn)
         {
-            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, handID, cardID, turn);
+            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, handID, turn);
         }
         SoundManager.PlaySound((int)EnumAudioClips.SpecialSummon);
         NarrationManager.SetSerif((int)EnumNarrationTexts.Skill);
