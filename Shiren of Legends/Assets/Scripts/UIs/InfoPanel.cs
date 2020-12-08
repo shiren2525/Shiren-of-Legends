@@ -28,7 +28,7 @@ public class InfoPanel : MonoBehaviour
     [SerializeField] GameObject Canvas = null;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             if (Canvas.activeSelf)
             {

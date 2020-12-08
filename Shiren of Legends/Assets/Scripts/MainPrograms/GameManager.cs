@@ -8,10 +8,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TimeBarController TimeBarController = null;
     [SerializeField] private NarrationManager NarrationManager = null;
     [SerializeField] private LoadScene LoadScene = null;
+    [SerializeField] private BoardManager BoardManager = null;
+    [SerializeField] private GameObject Cursor = null;
+    [SerializeField] Transform[] transformsHnad = new Transform[2];
     private bool turn = false;
+    private int StartingLaneX = 0;
     private int handID = 0;
     private int faith = 0;
-    private int cardID=0, cardID0 = 0, cardID1 = 0;
+    private int cardID = 0, cardID0 = 0, cardID1 = 0;
     private int turnNum = 0;
 
     public bool IsTimeLimit { get; set; }
@@ -98,17 +102,22 @@ public class GameManager : MonoBehaviour
 
     private void SelectHand()
     {
-        if (Input.GetKeyDown(KeyCode.Q) || IsTimeLimit)
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            IsTimeLimit = false;
             cardID = cardID0;
             handID = 0;
-            End();
+            Cursor.transform.position = transformsHnad[handID].transform.position;
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             cardID = cardID1;
             handID = 1;
+            Cursor.transform.position = transformsHnad[handID].transform.position;
+        }
+        else if (Input.GetKeyDown(KeyCode.E) || IsTimeLimit)
+        {
+            IsTimeLimit = false;
+            Cursor.transform.position = BoardManager.TransformList[StartingLaneX, laneY].transform.position;
             End();
         }
         void End()
@@ -129,44 +138,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    int laneY = 0;
     private void SelectLane()
     {
-        int laneY;
-        if (Input.GetKeyDown(KeyCode.Q) || IsTimeLimit)
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            ++laneY;
+            if (laneY == 4)
+                laneY = 0;
+
+            Cursor.transform.position = BoardManager.TransformList[StartingLaneX, laneY].transform.position;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            --laneY;
+            if (laneY == -1)
+                laneY = 3;
+
+            Cursor.transform.position = BoardManager.TransformList[StartingLaneX, laneY].transform.position;
+        }
+        else if (Input.GetKeyDown(KeyCode.E) || IsTimeLimit)
         {
             IsTimeLimit = false;
-            laneY = 0;
-            End();
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            laneY = 1;
-            End();
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            laneY = 2;
-            End();
-        }
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
-            laneY = 3;
             End();
         }
 
         void End()
         {
-            var laneX = 0;
-            if (turn)
-            {
-                laneX = (int)EnumBoardLength.MaxBoardX;
-            }
-            else if (!turn)
-            {
-                laneX = (int)EnumBoardLength.MinBoard;
-            }
-
-            var canSummon = CardManager.CheckCanSummon(new CardLanes { X = laneX, Y = laneY });
+            var canSummon = CardManager.CheckCanSummon(new CardLanes { X = StartingLaneX, Y = laneY });
             if (!canSummon)
             {
                 faith = (int)EnumFaith.Summon;
@@ -184,11 +184,11 @@ public class GameManager : MonoBehaviour
     {
         if (!turn)
         {
-            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MinBoard, Y = laneY }, handID,cardID, turn);
+            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MinBoard, Y = laneY }, handID, cardID, turn);
         }
         else if (turn)
         {
-            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, handID,cardID, turn);
+            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, handID, cardID, turn);
         }
         SoundManager.PlaySound((int)EnumAudioClips.SpecialSummon);
         NarrationManager.SetSerif((int)EnumNarrationTexts.Skill);
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
 
     private void Skill()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.E))
             NextFaith();
     }
 
@@ -217,6 +217,19 @@ public class GameManager : MonoBehaviour
     private void TurnChange()
     {
         turn = !turn;
+        if (turn)
+        {
+            StartingLaneX = (int)EnumBoardLength.MaxBoardX;
+        }
+        else if (!turn)
+        {
+            StartingLaneX = (int)EnumBoardLength.MinBoard;
+        }
+
+        handID = 0;
+        laneY = 0;
+        Cursor.transform.position = transformsHnad[handID].transform.position;
+
         NextFaith();
     }
 
