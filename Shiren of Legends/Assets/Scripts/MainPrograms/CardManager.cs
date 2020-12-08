@@ -35,11 +35,11 @@ public class CardManager : MonoBehaviour
         return BoardList[cardLanes.X, cardLanes.Y] == null;
     }
 
-    public void Summon(CardLanes cardLanes, int handID, bool turn)
+    public void Summon(CardLanes cardLanes, int handID,int cardID, bool turn)
     {
         BoardList[cardLanes.X, cardLanes.Y] = hand[handID];
         BoardList[cardLanes.X, cardLanes.Y].transform.position = BoardManager.TransformList[cardLanes.X, cardLanes.Y].position;
-        BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>().Create(deckIDs[handID], turn, cardLanes);
+        BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>().Create(deckIDs[cardID], turn, cardLanes);
         TurnPlayerList[cardLanes.X, cardLanes.Y] = turn;
         Skill(cardLanes);
     }

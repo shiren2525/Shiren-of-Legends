@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private bool turn = false;
     private int handID = 0;
     private int faith = 0;
-    private int cardID0 = 0, cardID1 = 0;
+    private int cardID=0, cardID0 = 0, cardID1 = 0;
     private int turnNum = 0;
 
     public bool IsTimeLimit { get; set; }
@@ -101,11 +101,13 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) || IsTimeLimit)
         {
             IsTimeLimit = false;
+            cardID = cardID0;
             handID = 0;
             End();
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
+            cardID = cardID1;
             handID = 1;
             End();
         }
@@ -182,11 +184,11 @@ public class GameManager : MonoBehaviour
     {
         if (!turn)
         {
-            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MinBoard, Y = laneY }, handID, turn);
+            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MinBoard, Y = laneY }, handID,cardID, turn);
         }
         else if (turn)
         {
-            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, handID, turn);
+            CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, handID,cardID, turn);
         }
         SoundManager.PlaySound((int)EnumAudioClips.SpecialSummon);
         NarrationManager.SetSerif((int)EnumNarrationTexts.Skill);

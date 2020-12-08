@@ -15,9 +15,6 @@ public class DeckCreator : MonoBehaviour
 
     private void InitDeck()
     {
-        var loadText = (Resources.Load("Decks", typeof(TextAsset)) as TextAsset).text;
-        string[] spliteText = loadText.Split(',');
-
         var deckTemplates = new List<int>(8);
         if (deckPlayerSelf.Count == 8)
         {
@@ -25,6 +22,8 @@ public class DeckCreator : MonoBehaviour
         }
         else
         {
+            var loadText = (Resources.Load("Decks", typeof(TextAsset)) as TextAsset).text;
+            string[] spliteText = loadText.Split(',');
             foreach (var num in spliteText)
             {
                 deckTemplates.Add(Int32.Parse(num));

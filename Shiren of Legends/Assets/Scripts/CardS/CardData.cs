@@ -15,11 +15,11 @@ public class CardData : MonoBehaviour
         {
            new CardParameter(){ ID=0, Name="Anivia",    HP=5, AD=5, Ratio=1.0f },
            new CardParameter(){ ID=1, Name="Ashe",      HP=5, AD=5, Ratio=0.2f },
-           new CardParameter(){ ID=2, Name="Shyvana",   HP=5, AD=5, Ratio=0.2f },
-           new CardParameter(){ ID=3, Name="Karthus",   HP=5, AD=5, Ratio=2.0f },
-           new CardParameter(){ ID=4, Name="Vladimir",  HP=10, AD=10, Ratio=0.2f },
+           new CardParameter(){ ID=4, Name="Shyvana",   HP=5, AD=5, Ratio=0.2f },
+           new CardParameter(){ ID=2, Name="Karthus",   HP=5, AD=5, Ratio=2.0f },
+           new CardParameter(){ ID=6, Name="Vladimir",  HP=10, AD=10, Ratio=0.2f },
            new CardParameter(){ ID=5, Name="Soraka",    HP=5, AD=2, Ratio=1.0f },
-           new CardParameter(){ ID=6, Name="Sena",      HP=5, AD=2, Ratio=0.5f },
+           new CardParameter(){ ID=3, Name="Sena",      HP=5, AD=2, Ratio=0.5f },
            new CardParameter(){ ID=7, Name="Yasuo",     HP=10, AD=10, Ratio=1.0f },
         };
 

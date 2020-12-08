@@ -77,9 +77,6 @@ public class TextManager : MonoBehaviour
 
     [SerializeField] GameObject[] dragonIcons = new GameObject[5];
 
-    public List<GameObject> Images0 { get; set; }
-    public List<GameObject> Images1 { get; set; }
-
     public void CreateDragonIconinPanel(int dragonID, bool player)
     {
         var gameobject = Instantiate(dragonIcons[dragonID]);

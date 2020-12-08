@@ -35,6 +35,7 @@ public class CardStatus : MonoBehaviour
 
         ColorChange();
         SetText();
+        Debug.Log(myID + "/" + this.name);
     }
 
     private int buffCount = 0;
