@@ -4,21 +4,21 @@ using UnityEngine.UI;
 
 public class TextManager : MonoBehaviour
 {
-    [SerializeField] Text textPlayer0HP = null;
-    [SerializeField] Text textPlayer1HP = null;
+    [SerializeField] private Text textPlayer0HP = null;
+    [SerializeField] private Text textPlayer1HP = null;
 
-    [SerializeField] Text[] textTower0HP = new Text[(int)EnumBoardLength.MaxBoardLengthY];
-    [SerializeField] Text[] textTower1HP = new Text[(int)EnumBoardLength.MaxBoardLengthY];
+    [SerializeField] private Text[] textTower0HP = new Text[(int)EnumBoardLength.MaxBoardLengthY];
+    [SerializeField] private Text[] textTower1HP = new Text[(int)EnumBoardLength.MaxBoardLengthY];
 
-    [SerializeField] SpriteRenderer[] spriteRenderers = new SpriteRenderer[(int)EnumBoardLength.MaxBoardLengthY];
-    [SerializeField] SpriteRenderer[] spriteRenderers1 = new SpriteRenderer[(int)EnumBoardLength.MaxBoardLengthY];
+    [SerializeField] private SpriteRenderer[] spriteRenderers = new SpriteRenderer[(int)EnumBoardLength.MaxBoardLengthY];
+    [SerializeField] private SpriteRenderer[] spriteRenderers1 = new SpriteRenderer[(int)EnumBoardLength.MaxBoardLengthY];
 
-    [SerializeField] Sprite spriteBlack = null;
+    [SerializeField] private Sprite spriteBlack = null;
 
-    [SerializeField] Image ImagePanel0 = null;
-    [SerializeField] Image ImagePanel1 = null;
+    [SerializeField] private Image ImagePanel0 = null;
+    [SerializeField] private Image ImagePanel1 = null;
 
-    [SerializeField] Text TextTurnNum = null;
+    [SerializeField] private Text TextTurnNum = null;
 
     public void SetText(int health, bool player)
     {
@@ -75,7 +75,7 @@ public class TextManager : MonoBehaviour
         TextTurnNum.text = "Dragon " + (5 - value).ToString();
     }
 
-    [SerializeField] GameObject[] dragonIcons = new GameObject[(int)EnumMonster.Elder + 1];
+    [SerializeField] private GameObject[] dragonIcons = new GameObject[(int)EnumMonster.Elder + 1];
 
     public void CreateDragonIconinPanel(int dragonID, bool player)
     {

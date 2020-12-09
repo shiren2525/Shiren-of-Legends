@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class DeckBuild : MonoBehaviour
 {
     [SerializeField] SetParentScript SetParentScript = null;
-    [SerializeField] private Transform[] transforms = new Transform[8];
+    [SerializeField] private Transform[] transforms = new Transform[(int)EnumNumbers.Cards];
     private int num;
-    readonly List<int> deckList = new List<int>(8);
+    readonly List<int> deckList = new List<int>((int)EnumNumbers.Cards);
 
     private void DeckBuilding()
     {
@@ -22,7 +22,7 @@ public class DeckBuild : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            if (num == 7)
+            if (num == (int)EnumNumbers.Cards - 1)
                 return;
 
             num++;
@@ -30,7 +30,7 @@ public class DeckBuild : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            if (deckList.Count == 8)
+            if (deckList.Count == (int)EnumNumbers.Cards)
                 return;
 
             deckList.Add(num);

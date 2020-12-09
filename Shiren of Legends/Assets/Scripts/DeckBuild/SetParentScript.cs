@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SetParentScript : MonoBehaviour
 {
-    [SerializeField] Image panel = null;
-    [SerializeField] GameObject[] images = new GameObject[8];
+    [SerializeField] private Image panel = null;
+    [SerializeField] private GameObject[] images = new GameObject[(int)EnumNumbers.Cards];
 
     public void SetPanel(int cardID)
     {

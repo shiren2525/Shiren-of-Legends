@@ -2,7 +2,7 @@
 
 public class PlayerStatus : MonoBehaviour
 {
-    [SerializeField] TextManager TextManager = null;
+    [SerializeField] private TextManager TextManager = null;
 
     private int player0HP = (int)EnumNumbers.PlayerHP;
     private int player1HP = (int)EnumNumbers.PlayerHP;

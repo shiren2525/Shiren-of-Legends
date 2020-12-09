@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class NarrationManager : MonoBehaviour
 {
-    [SerializeField] List<string> narrationList = new List<string>();
-    [SerializeField] Text NarrationText = null;
-    [SerializeField] List<string> showSerifList = new List<string>();
+    [SerializeField] private List<string> narrationList = new List<string>();
+    [SerializeField] private Text NarrationText = null;
+    [SerializeField] private List<string> showSerifList = new List<string>();
 
     private void Start()
     {

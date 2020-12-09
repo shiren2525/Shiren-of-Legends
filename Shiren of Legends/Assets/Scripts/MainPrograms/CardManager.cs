@@ -166,6 +166,8 @@ public class CardManager : MonoBehaviour
     public void BattleMonster<Type>(CardLanes cardLanes, int nextBoard, Type type, bool player) where Type : MonsterStatus
     {
         var thisCard = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
+        if (thisCard == null)
+            return;
         var enemyMonster = type;
 
         if (enemyMonster.MyHP <= thisCard.MyAD)

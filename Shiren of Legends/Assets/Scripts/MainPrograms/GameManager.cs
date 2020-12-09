@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     private int cardID = 0, cardID0 = 0, cardID1 = 0;
     private int turnNum = 0;
     private bool isCPU = false;
-    private int inputCount = 0; // 制御変数
     private int laneY = 0;
 
     public bool IsTimeLimit { get; set; }
@@ -103,25 +102,26 @@ public class GameManager : MonoBehaviour
         NextFaith();
     }
 
+    private bool isInput = false;
     private void SelectHand()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
+            isInput = true;
             cardID = cardID0;
             handID = 0;
             Cursor.transform.position = transformsHnad[handID].transform.position;
-            inputCount++;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
+            isInput = true;
             cardID = cardID1;
             handID = 1;
             Cursor.transform.position = transformsHnad[handID].transform.position;
-            inputCount++;
         }
         else if (Input.GetKeyDown(KeyCode.E) || IsTimeLimit)
         {
-            if (inputCount == 0)
+            if (!isInput)
             {
                 cardID = cardID0;
                 handID = 0;
@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
             {
                 CardManager.DeleteHand(0);
             }
-            inputCount = 0;
+            isInput = !isInput;
             SoundManager.PlaySound((int)EnumAudioClips.Draw);
             NarrationManager.SetSerif((int)EnumNarrationTexts.SelectLane);
             TimeBarController.StopCoroutine();

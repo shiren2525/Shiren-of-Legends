@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class TimeBarController : MonoBehaviour
 {
-    [SerializeField] Slider Slider = null;
-    [SerializeField] Slider Slider1 = null;
-    [SerializeField] GameManager GameManager = null;
+    [SerializeField] private Slider Slider = null;
+    [SerializeField] private Slider Slider1 = null;
+    [SerializeField] private GameManager GameManager = null;
     readonly int limitTime = 100;
 
     private IEnumerator TimeLimitCoroutin()
