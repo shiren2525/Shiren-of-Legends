@@ -4,11 +4,11 @@ public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] TextManager TextManager = null;
 
-    private int player0HP = 12;
-    private int player1HP = 12;
+    private int player0HP = (int)EnumNumbers.PlayerHP;
+    private int player1HP = (int)EnumNumbers.PlayerHP;
 
-    private int[] tower0HP = new int[4];
-    private int[] tower1HP = new int[4];
+    private readonly int[] tower0HP = new int[(int)EnumBoardLength.MaxBoardLengthY];
+    private readonly int[] tower1HP = new int[(int)EnumBoardLength.MaxBoardLengthY];
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class PlayerStatus : MonoBehaviour
 
     void InitTower()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < tower0HP.Length; i++)
         {
             tower0HP[i] = 8;
             tower1HP[i] = 8;

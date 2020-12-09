@@ -2,18 +2,11 @@
 
 public class BuffData : MonoBehaviour
 {
-    private CardManager CreateCardManager()
-    {
-        var CardManager = GameObject.Find("CardManager");
-        var cardManager = CardManager.GetComponent<CardManager>();        
-        return cardManager;
-    }
+    [SerializeField] private CardManager CardManager = null;
 
     private CardStatus CreateCardStatus(CardLanes cardLanes)
     {
-        var cardManager = CreateCardManager();
-        var card = cardManager.BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
-        return card;
+        return CardManager.BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>(); ;
     }
 
     public void InfernalBuff(CardLanes cardLanes)
@@ -30,8 +23,7 @@ public class BuffData : MonoBehaviour
 
     public void CloudBuff(CardLanes cardLanes)
     {
-        var cardManager = CreateCardManager();
-        cardManager.Skill(cardLanes);
+        CardManager.Skill(cardLanes);
     }
 
     public void OceanBuff(CardLanes cardLanes)

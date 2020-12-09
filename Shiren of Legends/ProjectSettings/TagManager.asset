@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - CardImage
+  - CardManager
+  - BuffManager
+  - CardData
+  - TextManager
+  - MonsterData
   layers:
   - Default
   - TransparentFX

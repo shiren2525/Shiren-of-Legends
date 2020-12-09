@@ -24,8 +24,7 @@ public class CardStatus : MonoBehaviour
         this.Player = player;
         CardLanes = cardLanes;
 
-        var CardDate = GameObject.Find(nameof(CardData));
-        var cardDate = CardDate.GetComponent<CardData>();
+        var cardDate = GameObject.FindWithTag(nameof(CardData)).GetComponent<CardData>();
         MyHP = cardDate.KeyValuesHP[myID];
         MyAD = cardDate.KeyValuesAD[myID];
         MyRatio = cardDate.KeyValuesRatio[myID];
@@ -35,7 +34,7 @@ public class CardStatus : MonoBehaviour
 
         ColorChange();
         SetText();
-        Debug.Log(myID + "/" + this.name);
+        Debug.Log("Summoned ID " + myID + ":" + this.name);
     }
 
     private int buffCount = 0;
@@ -45,8 +44,7 @@ public class CardStatus : MonoBehaviour
             return;
 
         buffCount++;
-        var BuffManagerObj = GameObject.Find(nameof(BuffManager));
-        var buffManager = BuffManagerObj.GetComponent<BuffManager>();
+        var buffManager = GameObject.FindWithTag(nameof(BuffManager)).GetComponent<BuffManager>();
         buffManager.Buff(CardLanes, Player);
     }
 
@@ -80,10 +78,10 @@ public class CardStatus : MonoBehaviour
             }
             catch (OverflowException)
             {
-                Debug.Log("オーバーフロー");
+                Debug.LogError("オーバーフロー");
             }
         }
-        Debug.Log("Dameged HP:" + MyHP + " / " + this.name);
+        Debug.Log("<color=magenta>" + "Dameged HP:" + MyHP + " / " + this.name + "</color>");
 
         CheckArrive(damageType);
         SetText();
@@ -140,8 +138,7 @@ public class CardStatus : MonoBehaviour
                 return;
         }
 
-        var CardManager = GameObject.Find("CardManager");
-        var cardManager = CardManager.GetComponent<CardManager>();
+        var cardManager = GameObject.FindWithTag(nameof(CardManager)).GetComponent<CardManager>();
         cardManager.Destroyer(CardLanes);
     }
 

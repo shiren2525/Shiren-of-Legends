@@ -7,11 +7,11 @@ public class TextManager : MonoBehaviour
     [SerializeField] Text textPlayer0HP = null;
     [SerializeField] Text textPlayer1HP = null;
 
-    [SerializeField] Text[] textTower0HP = new Text[4];
-    [SerializeField] Text[] textTower1HP = new Text[4];
+    [SerializeField] Text[] textTower0HP = new Text[(int)EnumBoardLength.MaxBoardLengthY];
+    [SerializeField] Text[] textTower1HP = new Text[(int)EnumBoardLength.MaxBoardLengthY];
 
-    [SerializeField] SpriteRenderer[] spriteRenderers = new SpriteRenderer[4];
-    [SerializeField] SpriteRenderer[] spriteRenderers1 = new SpriteRenderer[4];
+    [SerializeField] SpriteRenderer[] spriteRenderers = new SpriteRenderer[(int)EnumBoardLength.MaxBoardLengthY];
+    [SerializeField] SpriteRenderer[] spriteRenderers1 = new SpriteRenderer[(int)EnumBoardLength.MaxBoardLengthY];
 
     [SerializeField] Sprite spriteBlack = null;
 
@@ -54,10 +54,10 @@ public class TextManager : MonoBehaviour
         }
     }
 
+    private Color colorOn = new Color32(255, 255, 255, 255);
+    private Color colorOff = new Color32(255, 255, 255, 0);
     public void SetPanel(bool turn)
     {
-        var colorOn = new Color32(255, 255, 255, 200);
-        var colorOff = new Color32(255, 255, 255, 0);
         if (turn)
         {
             ImagePanel0.GetComponent<Image>().color = colorOff;
@@ -75,7 +75,7 @@ public class TextManager : MonoBehaviour
         TextTurnNum.text = "Dragon " + (5 - value).ToString();
     }
 
-    [SerializeField] GameObject[] dragonIcons = new GameObject[5];
+    [SerializeField] GameObject[] dragonIcons = new GameObject[(int)EnumMonster.Elder + 1];
 
     public void CreateDragonIconinPanel(int dragonID, bool player)
     {

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TimeBarController TimeBarController = null;
     [SerializeField] private NarrationManager NarrationManager = null;
     [SerializeField] private LoadScene LoadScene = null;
+    [SerializeField] private InfoPanel InfoPanel = null;
     [SerializeField] private BoardManager BoardManager = null;
     [SerializeField] private GameObject Cursor = null;
     [SerializeField] Transform[] transformsHnad = new Transform[2];
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     private int turnNum = 0;
     private bool isCPU = false;
     private int inputCount = 0; // 制御変数
+    private int laneY = 0;
 
     public bool IsTimeLimit { get; set; }
 
@@ -61,14 +63,12 @@ public class GameManager : MonoBehaviour
 
     private void Startup()
     {
+        Debug.Log(" ----------------------------------------------- ");
         TextManager.SetTurnNum(++turnNum);
         TextManager.SetPanel(turn);
         SoundManager.PlaySound((int)EnumAudioClips.NextTurn);
         NarrationManager.SetSerif((int)EnumNarrationTexts.NextPlayersTurn);
-        Debug.Log("<color=red> --------------------------- </color>");
-
         SummonMonster((int)EnumBoardLength.MaxBoardY);
-
         NextFaith();
     }
 
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
             }
             else if (canSummon)
             {
-                CardManager.SummonMonster(Random.Range(0, 4), cardLanes);
+                CardManager.SummonMonster(Random.Range(0, (int)EnumNumbers.Monsters - 1), cardLanes);
             }
             turnNum = 0;
         }
@@ -156,22 +156,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    int laneY = 0;
     private void SelectLane()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
             ++laneY;
-            if (laneY == 4)
-                laneY = 0;
+            if (laneY == (int)EnumBoardLength.MaxBoardLengthY)
+                laneY = (int)EnumBoardLength.MinBoard;
 
             Cursor.transform.position = BoardManager.TransformList[StartingLaneX, laneY].transform.position;
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             --laneY;
-            if (laneY == -1)
-                laneY = 3;
+            if (laneY == (int)EnumBoardLength.MinBoard - 1)
+                laneY = (int)EnumBoardLength.MaxBoardLengthY - 1;
 
             Cursor.transform.position = BoardManager.TransformList[StartingLaneX, laneY].transform.position;
         }
@@ -180,9 +179,9 @@ public class GameManager : MonoBehaviour
             IsTimeLimit = false;
             End();
         }
-        else if(isCPU && turn)
+        else if (isCPU && turn)
         {
-            laneY = Random.Range(0, 4);
+            laneY = Random.Range(0, (int)EnumBoardLength.MaxBoardLengthY);
             End();
         }
 
@@ -197,6 +196,7 @@ public class GameManager : MonoBehaviour
             {
                 Summon(laneY);
                 TimeBarController.StopCoroutine();
+                TimeBarController.StartCoroutine();
                 NextFaith();
             }
         }
@@ -213,13 +213,17 @@ public class GameManager : MonoBehaviour
             CardManager.Summon(new CardLanes { X = (int)EnumBoardLength.MaxBoardX, Y = laneY }, handID, cardID, turn);
         }
         SoundManager.PlaySound((int)EnumAudioClips.SpecialSummon);
-        NarrationManager.SetSerif((int)EnumNarrationTexts.Skill);
+        NarrationManager.SetSerif((int)EnumNarrationTexts.Battle);
     }
 
     private void Skill()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || IsTimeLimit)
+        {
+            IsTimeLimit = false;
+            TimeBarController.StopCoroutine();
             NextFaith();
+        }
     }
 
     private void Battle()
@@ -265,15 +269,19 @@ public class GameManager : MonoBehaviour
     {
         FaithUpdate();
 
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            InfoPanel.PanelChange();
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
         {
             isCPU = !isCPU;
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        else if (Input.GetKeyDown(KeyCode.P))
         {
             LoadScene.ResetGames();
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             LoadScene.ExitGames();
         }

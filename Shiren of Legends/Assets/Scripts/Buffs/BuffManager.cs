@@ -24,28 +24,29 @@ public class BuffManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private BuffData BuffData = null;
     public void Buff(int buffNum, CardLanes cardLanes)
     {
-        var buffData = gameObject.AddComponent<BuffData>();
         switch (buffNum)
         {
             case (int)EnumMonster.Infernal:
-                buffData.InfernalBuff(cardLanes);
+                BuffData.InfernalBuff(cardLanes);
                 break;
             case (int)EnumMonster.Mountain:
-                buffData.MountainBuff(cardLanes);
+                BuffData.MountainBuff(cardLanes);
                 break;
             case (int)EnumMonster.Cloud:
-                buffData.CloudBuff(cardLanes);
+                BuffData.CloudBuff(cardLanes);
                 break;
             case (int)EnumMonster.Ocean:
-                buffData.OceanBuff(cardLanes);
+                BuffData.OceanBuff(cardLanes);
                 break;
             case (int)EnumMonster.Elder:
-                buffData.ElderBuff(cardLanes);
+                BuffData.ElderBuff(cardLanes);
                 break;
 
             default:
+                Debug.LogError("buff is Error");
                 break;
         }
     }

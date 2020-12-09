@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeckCreator : MonoBehaviour
 {
     [SerializeField] private CardManager CardManager = null;
-    [SerializeField] private GameObject[] FullCards = new GameObject[8];
+    [SerializeField] private GameObject[] FullCards = new GameObject[(int)EnumNumbers.Cards];
     public List<int> deckPlayerSelf;
 
     private void Start()
@@ -15,8 +15,8 @@ public class DeckCreator : MonoBehaviour
 
     private void InitDeck()
     {
-        var deckTemplates = new List<int>(8);
-        if (deckPlayerSelf.Count == 8)
+        var deckTemplates = new List<int>((int)EnumNumbers.Cards);
+        if (deckPlayerSelf.Count == (int)EnumNumbers.Cards)
         {
             deckTemplates = deckPlayerSelf;
         }
@@ -34,7 +34,6 @@ public class DeckCreator : MonoBehaviour
         foreach (var num in deckTemplates)
         {
             deckObjects.Add(FullCards[num]);
-            Debug.LogError(num);
         }
 
         CardManager.DeckCreator(deckObjects.ToArray(), deckTemplates.ToArray());

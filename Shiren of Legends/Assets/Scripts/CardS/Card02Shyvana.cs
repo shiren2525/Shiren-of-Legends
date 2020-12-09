@@ -7,8 +7,7 @@ public class Card02Shyvana : MonoBehaviour, ISkill
         var cardStatus = this.gameObject.GetComponent<CardStatus>();
         var player = cardStatus.Player;
 
-        var BuffManager = GameObject.Find("BuffManager");
-        var buffManager = BuffManager.GetComponent<BuffManager>();
+        var buffManager = GameObject.FindWithTag(nameof(BuffManager)).GetComponent<BuffManager>();
 
         if (player)
         {

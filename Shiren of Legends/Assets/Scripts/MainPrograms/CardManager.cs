@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class CardManager : MonoBehaviour
 {
     [SerializeField] BoardManager BoardManager = null;
     [SerializeField] PlayerStatus PlayerStatus = null;
-    [SerializeField] GameObject[] cardObjList = new GameObject[8];
-    [SerializeField] GameObject[] monsterObjList = new GameObject[5];
-    [SerializeField] Transform[] transformsHnad = new Transform[2];
+    [SerializeField] GameObject[] cardObjList = new GameObject[(int)EnumNumbers.Cards];
+    [SerializeField] GameObject[] monsterObjList = new GameObject[(int)EnumNumbers.Monsters];
+    [SerializeField] Transform[] transformsHnad = new Transform[(int)EnumNumbers.Hands];
     public GameObject[,] BoardList { get; private set; } = new GameObject[(int)EnumBoardLength.MaxBoardLengthX, (int)EnumBoardLength.MaxBoardLengthY];
     public bool[,] TurnPlayerList { get; private set; } = new bool[(int)EnumBoardLength.MaxBoardLengthX, (int)EnumBoardLength.MaxBoardLengthY];
-    private readonly GameObject[] hand = new GameObject[2];
-    private int[] deckIDs = new int[8];
+    private readonly GameObject[] hand = new GameObject[(int)EnumNumbers.Hands];
+    private int[] deckIDs = new int[(int)EnumNumbers.Cards];
 
     public void DeckCreator(GameObject[] deckObjs, int[] deckIDs)
     {
@@ -35,7 +34,7 @@ public class CardManager : MonoBehaviour
         return BoardList[cardLanes.X, cardLanes.Y] == null;
     }
 
-    public void Summon(CardLanes cardLanes, int handID,int cardID, bool turn)
+    public void Summon(CardLanes cardLanes, int handID, int cardID, bool turn)
     {
         BoardList[cardLanes.X, cardLanes.Y] = hand[handID];
         BoardList[cardLanes.X, cardLanes.Y].transform.position = BoardManager.TransformList[cardLanes.X, cardLanes.Y].position;
@@ -113,7 +112,7 @@ public class CardManager : MonoBehaviour
 
                 if (nextBoard == (int)EnumBoardLength.MinBoard || nextBoard == (int)EnumBoardLength.MaxBoardX)
                 {
-                    PlayerStatus.AddDirectDamage(card.MyAD, turn,cardLanes.Y);
+                    PlayerStatus.AddDirectDamage(card.MyAD, turn, cardLanes.Y);
                     Destroyer(cardLanes);
                 }
                 else if (BoardList[nextBoard, cardLanes.Y] == null)
@@ -144,7 +143,7 @@ public class CardManager : MonoBehaviour
     {
         var thisCard = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
         var enemyCard = type;
-
+        Debug.Log("<color=blue>" + thisCard.name + " VS " + enemyCard.name + "</color>");
         if (enemyCard.MyHP <= thisCard.MyAD)
         {
             thisCard.AddDamage(enemyCard.MyAD, (int)EnumSkillType.AutoAttack);
@@ -203,10 +202,10 @@ public class CardManager : MonoBehaviour
         BoardList[cardLanes.X, cardLanes.Y].transform.position = BoardManager.TransformList[nextBoard, cardLanes.Y].position;
         BoardList[nextBoard, cardLanes.Y] = BoardList[cardLanes.X, cardLanes.Y];
         TurnPlayerList[nextBoard, cardLanes.Y] = TurnPlayerList[cardLanes.X, cardLanes.Y];
-        
+
         BoardList[cardLanes.X, cardLanes.Y] = null;
         TurnPlayerList[cardLanes.X, cardLanes.Y] = false;
-        
+
         cardStatus.CardLanes.X = nextBoard;
     }
 

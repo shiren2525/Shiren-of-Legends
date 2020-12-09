@@ -4,10 +4,10 @@ using UnityEngine.UI;
 public class InfoPanel : MonoBehaviour
 {
     [SerializeField] CardData CardDate = null;
-    [SerializeField] Text[] Texts = new Text[8];    
+    [SerializeField] Text[] Texts = new Text[(int)EnumNumbers.Cards];
 
     private void Init()
-    {        
+    {
         var loadtext = (Resources.Load("CardEffect", typeof(TextAsset)) as TextAsset).text;
         string[] spliteText = loadtext.Split('\n');
 
@@ -26,18 +26,15 @@ public class InfoPanel : MonoBehaviour
     }
 
     [SerializeField] GameObject Canvas = null;
-    private void Update()
+    public void PanelChange()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Canvas.activeSelf)
         {
-            if (Canvas.activeSelf)
-            {
-                Canvas.SetActive(false);
-            }
-            else if (!Canvas.activeSelf)
-            {
-                Canvas.SetActive(true);
-            }
+            Canvas.SetActive(false);
+        }
+        else if (!Canvas.activeSelf)
+        {
+            Canvas.SetActive(true);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -41,7 +40,7 @@ public class NarrationManager : MonoBehaviour
     {
         NarrationText.text = showSerifList[num];
 
-        await Task.Delay(TimeSpan.FromSeconds(0.8));
+        await Task.Delay(TimeSpan.FromSeconds(1.0));
 
         if (showSerifList.Count > num + 1 && showSerifList.Count < 4)
         {

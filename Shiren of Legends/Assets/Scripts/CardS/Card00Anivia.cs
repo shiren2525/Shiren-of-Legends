@@ -9,8 +9,7 @@ public class Card00Anivia : MonoBehaviour, IHasSlain
         if (!canRespawn)
             return canRespawn;
 
-        var CardManager = GameObject.Find("CardManager");
-        var cardManager = CardManager.GetComponent<CardManager>();
+        var cardManager = GameObject.FindWithTag(nameof(CardManager)).GetComponent<CardManager>();
         var cardStatus = this.gameObject.GetComponent<CardStatus>();
         cardStatus.MyHP = cardStatus.MyMaxHP;
 

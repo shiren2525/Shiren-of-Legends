@@ -6,8 +6,7 @@ public class CardParent : MonoBehaviour
 {
     public IEnumerable<SendCard> FullSearch(Func<bool, int, bool> func)
     {
-        var CardManager = GameObject.Find("CardManager");
-        var cardManager = CardManager.GetComponent<CardManager>();
+        var cardManager = GameObject.FindWithTag(nameof(CardManager)).GetComponent<CardManager>();
 
         for (int i = 0; i < cardManager.BoardList.GetLength(0); i++)
         {

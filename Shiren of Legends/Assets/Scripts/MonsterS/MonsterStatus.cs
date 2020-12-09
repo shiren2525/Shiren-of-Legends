@@ -6,13 +6,11 @@ public class MonsterStatus : MonoBehaviour
     private int myID;
     public int MyHP { get; set; }
     public int MyAD { get; set; }
-
     public CardLanes CardLanes { get; set; }
 
     public void Create(int ID, CardLanes cardLanes)
     {
-        var MonsterDataObj = GameObject.Find("MonsterData");
-        var monsterData = MonsterDataObj.GetComponent<MonsterData>();
+        var monsterData = GameObject.FindWithTag(nameof(MonsterData)).GetComponent<MonsterData>();
         myID = ID;
         CardLanes = cardLanes;
         MyHP = monsterData.KeyValuesHP[myID];
@@ -29,37 +27,26 @@ public class MonsterStatus : MonoBehaviour
 
         if (MyHP <= 0)
         {
-            var BuffManager = GameObject.Find("BuffManager");
-            var buffManager = BuffManager.GetComponent<BuffManager>();
-
-            var TextManager = GameObject.Find("TextManager");
-            var textManager = TextManager.GetComponent<TextManager>();
-            if (player)
-            {
-                buffManager.RedBuffList.Add(myID);
-                textManager.CreateDragonIconinPanel(myID, player);
-            }
-            else if (!player)
-            {
-                buffManager.BlueBuffList.Add(myID);
-                textManager.CreateDragonIconinPanel(myID, player);
-            }
-            Destroyer();
+            Destroyer(player);
         }
     }
 
-    public void AddHeal(int heal)
+    private void Destroyer(bool player)
     {
-        MyHP += heal;
-        SetText();
-        Debug.Log(this.name + " is Healed " + MyHP);
-    }
+        var buffManager = GameObject.FindWithTag(nameof(BuffManager)).GetComponent<BuffManager>();
+        var textManager = GameObject.FindWithTag(nameof(TextManager)).GetComponent<TextManager>();
+        if (player)
+        {
+            buffManager.RedBuffList.Add(myID);
+            textManager.CreateDragonIconinPanel(myID, player);
+        }
+        else if (!player)
+        {
+            buffManager.BlueBuffList.Add(myID);
+            textManager.CreateDragonIconinPanel(myID, player);
+        }
 
-    private void Destroyer()
-    {
-        var CardManager = GameObject.Find("CardManager");
-        var cardManager = CardManager.GetComponent<CardManager>();
-
+        var cardManager = GameObject.FindWithTag(nameof(CardManager)).GetComponent<CardManager>();
         cardManager.Destroyer(CardLanes);
     }
 
