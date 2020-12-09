@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     private int faith = 0;
     private int cardID = 0, cardID0 = 0, cardID1 = 0;
     private int turnNum = 0;
+    private bool isCPU = false;
+    private int inputCount = 0; // 制御変数
 
     public bool IsTimeLimit { get; set; }
 
@@ -87,6 +89,7 @@ public class GameManager : MonoBehaviour
             {
                 CardManager.SummonMonster(Random.Range(0, 4), cardLanes);
             }
+            turnNum = 0;
         }
     }
 
@@ -107,19 +110,33 @@ public class GameManager : MonoBehaviour
             cardID = cardID0;
             handID = 0;
             Cursor.transform.position = transformsHnad[handID].transform.position;
+            inputCount++;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             cardID = cardID1;
             handID = 1;
             Cursor.transform.position = transformsHnad[handID].transform.position;
+            inputCount++;
         }
         else if (Input.GetKeyDown(KeyCode.E) || IsTimeLimit)
         {
+            if (inputCount == 0)
+            {
+                cardID = cardID0;
+                handID = 0;
+            }
             IsTimeLimit = false;
             Cursor.transform.position = BoardManager.TransformList[StartingLaneX, laneY].transform.position;
             End();
         }
+        else if (isCPU && turn)
+        {
+            cardID = cardID0;
+            handID = 0;
+            End();
+        }
+
         void End()
         {
             if (handID == 0)
@@ -130,6 +147,7 @@ public class GameManager : MonoBehaviour
             {
                 CardManager.DeleteHand(0);
             }
+            inputCount = 0;
             SoundManager.PlaySound((int)EnumAudioClips.Draw);
             NarrationManager.SetSerif((int)EnumNarrationTexts.SelectLane);
             TimeBarController.StopCoroutine();
@@ -141,7 +159,6 @@ public class GameManager : MonoBehaviour
     int laneY = 0;
     private void SelectLane()
     {
-
         if (Input.GetKeyDown(KeyCode.W))
         {
             ++laneY;
@@ -161,6 +178,11 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.E) || IsTimeLimit)
         {
             IsTimeLimit = false;
+            End();
+        }
+        else if(isCPU && turn)
+        {
+            laneY = Random.Range(0, 4);
             End();
         }
 
@@ -243,6 +265,10 @@ public class GameManager : MonoBehaviour
     {
         FaithUpdate();
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            isCPU = !isCPU;
+        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             LoadScene.ResetGames();

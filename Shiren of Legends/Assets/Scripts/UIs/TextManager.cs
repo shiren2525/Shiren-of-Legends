@@ -72,7 +72,7 @@ public class TextManager : MonoBehaviour
 
     public void SetTurnNum(int value)
     {
-        TextTurnNum.text = "Turn " + value.ToString();
+        TextTurnNum.text = "Dragon " + (5 - value).ToString();
     }
 
     [SerializeField] GameObject[] dragonIcons = new GameObject[5];
@@ -80,14 +80,14 @@ public class TextManager : MonoBehaviour
     public void CreateDragonIconinPanel(int dragonID, bool player)
     {
         var gameobject = Instantiate(dragonIcons[dragonID]);
-        
+
         if (player)
         {
-            gameobject.transform.SetParent(ImagePanel1.transform);            
+            gameobject.transform.SetParent(ImagePanel1.transform);
         }
         else if (!player)
         {
-            gameobject.transform.SetParent(ImagePanel0.transform);            
+            gameobject.transform.SetParent(ImagePanel0.transform);
         }
         gameobject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
     }

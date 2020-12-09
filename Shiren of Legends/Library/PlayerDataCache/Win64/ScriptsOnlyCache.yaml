@@ -14,12 +14,15 @@ ScriptsOnlyBuild:
     - CardData
     - CardManager
     - CardStatus
+    - DeckBuild
+    - DeckCreator
     - GameManager
     - InfoPanel
     - MonsterData
     - MonsterStatus
     - NarrationManager
     - PlayerStatus
+    - SetParentScript
     - SoundManager
     - TextManager
     - TimeBarController
@@ -29,8 +32,14 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
+    Unity.TextMeshPro.dll:
+    - TMPro.TMP_FontAsset
+    - TMPro.TMP_Settings
+    - TMPro.TMP_SpriteAsset
+    - TMPro.TMP_StyleSheet
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -43,6 +52,57 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
+    Assets/Scenes/DeckBuild.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9696}
+    - Class: 114
+      Script: {instanceID: 9868}
+    - Class: 114
+      Script: {instanceID: 9912}
+    - Class: 114
+      Script: {instanceID: 10334}
+    - Class: 114
+      Script: {instanceID: 10946}
+    - Class: 114
+      Script: {instanceID: 11208}
+    - Class: 114
+      Script: {instanceID: 11304}
+    - Class: 114
+      Script: {instanceID: 11406}
+    - Class: 114
+      Script: {instanceID: 11596}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/Scenes/SampleScene.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -66,70 +126,82 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
+    - Class: 109
+      Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9674}
+      Script: {instanceID: 9696}
     - Class: 114
-      Script: {instanceID: 9698}
+      Script: {instanceID: 9720}
     - Class: 114
-      Script: {instanceID: 9710}
+      Script: {instanceID: 9732}
     - Class: 114
-      Script: {instanceID: 9766}
+      Script: {instanceID: 9788}
     - Class: 114
-      Script: {instanceID: 9846}
+      Script: {instanceID: 9868}
     - Class: 114
-      Script: {instanceID: 9848}
+      Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 9890}
+      Script: {instanceID: 9912}
     - Class: 114
-      Script: {instanceID: 10016}
+      Script: {instanceID: 10038}
     - Class: 114
-      Script: {instanceID: 10034}
+      Script: {instanceID: 10056}
     - Class: 114
-      Script: {instanceID: 10068}
+      Script: {instanceID: 10090}
     - Class: 114
-      Script: {instanceID: 10312}
+      Script: {instanceID: 10334}
     - Class: 114
-      Script: {instanceID: 10340}
+      Script: {instanceID: 10354}
     - Class: 114
-      Script: {instanceID: 10526}
+      Script: {instanceID: 10362}
     - Class: 114
-      Script: {instanceID: 10564}
+      Script: {instanceID: 10530}
     - Class: 114
-      Script: {instanceID: 10634}
+      Script: {instanceID: 10550}
     - Class: 114
-      Script: {instanceID: 10654}
+      Script: {instanceID: 10588}
     - Class: 114
-      Script: {instanceID: 10744}
+      Script: {instanceID: 10658}
     - Class: 114
-      Script: {instanceID: 10794}
+      Script: {instanceID: 10678}
     - Class: 114
-      Script: {instanceID: 10922}
+      Script: {instanceID: 10768}
     - Class: 114
-      Script: {instanceID: 11004}
+      Script: {instanceID: 10818}
     - Class: 114
-      Script: {instanceID: 11088}
+      Script: {instanceID: 10946}
     - Class: 114
-      Script: {instanceID: 11184}
+      Script: {instanceID: 10950}
     - Class: 114
-      Script: {instanceID: 11188}
+      Script: {instanceID: 10964}
     - Class: 114
-      Script: {instanceID: 11276}
+      Script: {instanceID: 11028}
     - Class: 114
-      Script: {instanceID: 11286}
+      Script: {instanceID: 11112}
+    - Class: 114
+      Script: {instanceID: 11208}
+    - Class: 114
+      Script: {instanceID: 11212}
+    - Class: 114
+      Script: {instanceID: 11300}
     - Class: 114
       Script: {instanceID: 11312}
     - Class: 114
       Script: {instanceID: 11338}
     - Class: 114
-      Script: {instanceID: 11460}
+      Script: {instanceID: 11364}
     - Class: 114
-      Script: {instanceID: 11510}
+      Script: {instanceID: 11386}
     - Class: 114
-      Script: {instanceID: 11568}
+      Script: {instanceID: 11488}
     - Class: 114
-      Script: {instanceID: 11602}
+      Script: {instanceID: 11538}
     - Class: 114
-      Script: {instanceID: 11624}
+      Script: {instanceID: 11596}
+    - Class: 114
+      Script: {instanceID: 11630}
+    - Class: 114
+      Script: {instanceID: 11652}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -401,6 +473,12 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
+      Hash: 23b71ce6aefaf09691c287e0193b36d1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DeckCreator
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -461,7 +539,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: d711c7759d90954507c4558a71e1d9b0
+      Hash: 7ce64dce5935c270be1271f6bc15b5ea
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -575,6 +653,12 @@ ScriptsOnlyBuild:
     className: MonsterStatus
   - hash:
       serializedVersion: 2
+      Hash: d458bbfff402b325637d9dfc26538bc9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SetParentScript
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -603,6 +687,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: ececeab782d34397a70f19719e92a822
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DeckBuild
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -714,4 +804,5 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Game_Exe/SoL02/Shiren of Legends.exe
+  - Assets/Scenes/DeckBuild.unity
+  playerPath: D:/Game_Exe/SoL_var1.0/Shiren of Legends.exe

@@ -13,9 +13,9 @@ public class CardManager : MonoBehaviour
     private readonly GameObject[] hand = new GameObject[2];
     private int[] deckIDs = new int[8];
 
-    public void DeckCreator(List<GameObject> deckObjs, int[] deckIDs)
+    public void DeckCreator(GameObject[] deckObjs, int[] deckIDs)
     {
-        cardObjList = deckObjs.ToArray();
+        cardObjList = deckObjs;
         this.deckIDs = deckIDs;
     }
 

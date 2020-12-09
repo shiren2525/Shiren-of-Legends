@@ -34,8 +34,9 @@ public class DeckCreator : MonoBehaviour
         foreach (var num in deckTemplates)
         {
             deckObjects.Add(FullCards[num]);
+            Debug.LogError(num);
         }
 
-        CardManager.DeckCreator(deckObjects, deckTemplates.ToArray());
+        CardManager.DeckCreator(deckObjects.ToArray(), deckTemplates.ToArray());
     }
 }
