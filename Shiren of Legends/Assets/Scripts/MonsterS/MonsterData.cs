@@ -8,7 +8,7 @@ public class MonsterData : MonoBehaviour
     public Dictionary<int, int> KeyValuesAD { get; set; }    
     public Dictionary<int, string> KeyValuesName { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         CardParameter[] cardParameters = new CardParameter[]
         {

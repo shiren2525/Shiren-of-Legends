@@ -111,6 +111,8 @@ GameObject:
   - component: {fileID: 7687237300648131600}
   - component: {fileID: 2453309005234386666}
   - component: {fileID: 6566144455517156824}
+  - component: {fileID: -4312076215757686670}
+  - component: {fileID: 9063947996884348494}
   m_Layer: 0
   m_Name: Soraka
   m_TagString: Untagged
@@ -194,6 +196,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1cf38c25f0f841962c51f368ea6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardData: {fileID: -4312076215757686670}
+  MonsterData: {fileID: 9063947996884348494}
+  Renderer: {fileID: 7687237300648131600}
   Text: {fileID: 5374113708603932762}
 --- !u!114 &6566144455517156824
 MonoBehaviour:
@@ -205,6 +210,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c2f6e8724f13794890e6ac736caadac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardStatus: {fileID: 2453309005234386666}
+--- !u!114 &-4312076215757686670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2737262208759378519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40c8c134ab045146b53f8f16bdba2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9063947996884348494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2737262208759378519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b666e48560a04e8b8277c85c3a33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4066821335387119644

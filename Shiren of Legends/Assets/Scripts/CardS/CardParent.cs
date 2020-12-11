@@ -15,8 +15,8 @@ public class CardParent : MonoBehaviour
                 if (cardManager.BoardList[i, j] == null)
                     continue;
 
-                var card = cardManager.BoardList[i, j].GetComponent<CardStatus>();
-                if (card == null)
+                var card = cardManager.CardStatuseList[i, j];
+                if (card == null || card.IsMonsterCard)
                     continue;
 
                 var enemyPlayer = cardManager.TurnPlayerList[i, j];

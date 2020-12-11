@@ -188,6 +188,8 @@ GameObject:
   - component: {fileID: 7440705137291051719}
   - component: {fileID: 3329024134435210345}
   - component: {fileID: 543201316360360692}
+  - component: {fileID: 6619236545054879981}
+  - component: {fileID: 7479744990738473118}
   m_Layer: 0
   m_Name: Karthus
   m_TagString: Untagged
@@ -271,6 +273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1cf38c25f0f841962c51f368ea6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardData: {fileID: 6619236545054879981}
+  MonsterData: {fileID: 7479744990738473118}
+  Renderer: {fileID: 7440705137291051719}
   Text: {fileID: 6755313997500732189}
 --- !u!114 &543201316360360692
 MonoBehaviour:
@@ -282,5 +287,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7821235c4f6fc2f4f9b73b98f08da1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardStatus: {fileID: 3329024134435210345}
+--- !u!114 &6619236545054879981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7471690628054921329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40c8c134ab045146b53f8f16bdba2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7479744990738473118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7471690628054921329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b666e48560a04e8b8277c85c3a33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -89,6 +89,8 @@ GameObject:
   - component: {fileID: 3960137520345836958}
   - component: {fileID: 1743696447316843243}
   - component: {fileID: 4653369646467851105}
+  - component: {fileID: -3580206855437484691}
+  - component: {fileID: -3383536072328934266}
   m_Layer: 0
   m_Name: Ashe
   m_TagString: Untagged
@@ -177,6 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1cf38c25f0f841962c51f368ea6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardData: {fileID: -3580206855437484691}
+  MonsterData: {fileID: -3383536072328934266}
+  Renderer: {fileID: 3960137520345836958}
   Text: {fileID: 3359531951926995831}
 --- !u!114 &4653369646467851105
 MonoBehaviour:
@@ -188,6 +193,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afed66355d00638439ee75300fb63b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardStatus: {fileID: 1743696447316843243}
+--- !u!114 &-3580206855437484691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960137520345836952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40c8c134ab045146b53f8f16bdba2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3383536072328934266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960137520345836952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b666e48560a04e8b8277c85c3a33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4964527182065607822

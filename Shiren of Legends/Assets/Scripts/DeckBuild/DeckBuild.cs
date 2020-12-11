@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class DeckBuild : MonoBehaviour
 {
-    [SerializeField] SetParentScript SetParentScript = null;
+    [SerializeField] private SetParentScript SetParentScript = null;
     [SerializeField] private Transform[] transforms = new Transform[(int)EnumNumbers.Cards];
     private int num;
-    readonly List<int> deckList = new List<int>((int)EnumNumbers.Cards);
+    private readonly List<int> deckList = new List<int>((int)EnumNumbers.Cards);
 
     private void DeckBuilding()
     {

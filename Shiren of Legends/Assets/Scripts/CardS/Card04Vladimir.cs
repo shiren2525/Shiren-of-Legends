@@ -2,16 +2,16 @@
 
 public class Card04Vladimir : MonoBehaviour, IPassiveSkill, ILifeSteal
 {
+    [SerializeField] private CardStatus CardStatus = null;
+
     public void PassiveSkill()
     {
-        var cardStatus = this.gameObject.GetComponent<CardStatus>();
-        cardStatus.AddDamage((int)(cardStatus.MyAD * cardStatus.MyRatio), (int)EnumSkillType.AreaOfEffect);
+        CardStatus.AddDamage((int)(CardStatus.MyAD * CardStatus.MyRatio), (int)EnumSkillType.AreaOfEffect);
     }
 
     public void LifeSteal()
     {
-        var cardStatus = this.gameObject.GetComponent<CardStatus>();
-        cardStatus.AddHeal((int)(cardStatus.MyAD));
-        cardStatus.MyAD += (int)(cardStatus.MyAD * cardStatus.MyRatio);
+        CardStatus.AddHeal((int)(CardStatus.MyAD));
+        CardStatus.MyAD += (int)(CardStatus.MyAD * CardStatus.MyRatio);
     }
 }

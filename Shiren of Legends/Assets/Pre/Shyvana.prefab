@@ -89,6 +89,8 @@ GameObject:
   - component: {fileID: 3960137520345836958}
   - component: {fileID: 1743696447316843243}
   - component: {fileID: 7399007909884842256}
+  - component: {fileID: -6945257122300535743}
+  - component: {fileID: 766050148457040490}
   m_Layer: 0
   m_Name: Shyvana
   m_TagString: Untagged
@@ -177,6 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1cf38c25f0f841962c51f368ea6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardData: {fileID: -6945257122300535743}
+  MonsterData: {fileID: 766050148457040490}
+  Renderer: {fileID: 3960137520345836958}
   Text: {fileID: 3359531951926995831}
 --- !u!114 &7399007909884842256
 MonoBehaviour:
@@ -188,6 +193,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9cc7fab9927c414495057d1f3b106f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardStatus: {fileID: 1743696447316843243}
+--- !u!114 &-6945257122300535743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960137520345836952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40c8c134ab045146b53f8f16bdba2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &766050148457040490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960137520345836952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b666e48560a04e8b8277c85c3a33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4964527182065607822

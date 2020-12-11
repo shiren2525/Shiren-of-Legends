@@ -1,5 +1,8 @@
-﻿public class Card03Karthus : CardParent, IHasSlain
+﻿using UnityEngine;
+
+public class Card03Karthus : CardParent, IHasSlain
 {
+    [SerializeField] private CardStatus CardStatus = null;
     private bool canSkill = true;
 
     public bool HasSlain(CardLanes cardLanes, bool player)
@@ -8,13 +11,12 @@
             return canSkill;
 
         canSkill = false;
-        var cardStatus = this.gameObject.GetComponent<CardStatus>();
-        var myPlayer = cardStatus.Player;
+        var myPlayer = CardStatus.Player;
 
         var fullSearch = FullSearch((enemyPlayer, enemyLane) => enemyPlayer != myPlayer);
         foreach (var card in fullSearch)
         {
-            card.CardStatus.AddDamage((int)(cardStatus.MyAD * cardStatus.MyRatio), (int)EnumSkillType.AreaOfEffect);
+            card.CardStatus.AddDamage((int)(CardStatus.MyAD * CardStatus.MyRatio), (int)EnumSkillType.AreaOfEffect);
         }
 
         canSkill = !canSkill;

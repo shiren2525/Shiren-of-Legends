@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3790866177419246552}
   - component: {fileID: 6077231582549818881}
   - component: {fileID: 1530840405238241656}
+  - component: {fileID: -8964030708424794615}
+  - component: {fileID: -901471578767855198}
   m_Layer: 0
   m_Name: Senna
   m_TagString: Untagged
@@ -95,6 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1cf38c25f0f841962c51f368ea6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardData: {fileID: -8964030708424794615}
+  MonsterData: {fileID: -901471578767855198}
+  Renderer: {fileID: 3790866177419246552}
   Text: {fileID: 1407592925944363648}
 --- !u!114 &1530840405238241656
 MonoBehaviour:
@@ -106,6 +111,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b2512274c5ed4c42b8e5ee7e4676381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardStatus: {fileID: 6077231582549818881}
+--- !u!114 &-8964030708424794615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2946698307754339188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40c8c134ab045146b53f8f16bdba2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-901471578767855198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2946698307754339188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b666e48560a04e8b8277c85c3a33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6250950637885095009

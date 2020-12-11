@@ -89,6 +89,8 @@ GameObject:
   - component: {fileID: 3470967487857001277}
   - component: {fileID: 847737717147790738}
   - component: {fileID: 4566248407806661126}
+  - component: {fileID: 1152018179758121460}
+  - component: {fileID: 2556956622164883432}
   m_Layer: 0
   m_Name: Vladimir
   m_TagString: Untagged
@@ -172,6 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1cf38c25f0f841962c51f368ea6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardData: {fileID: 1152018179758121460}
+  MonsterData: {fileID: 2556956622164883432}
+  Renderer: {fileID: 3470967487857001277}
   Text: {fileID: 5382768980685488975}
 --- !u!114 &4566248407806661126
 MonoBehaviour:
@@ -183,6 +188,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3686a0e2f29091941a8bb21e3ebdda35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardStatus: {fileID: 847737717147790738}
+--- !u!114 &1152018179758121460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640338973008512271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40c8c134ab045146b53f8f16bdba2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2556956622164883432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640338973008512271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b666e48560a04e8b8277c85c3a33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7789020236741799703

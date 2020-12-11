@@ -8,6 +8,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject[] monsterObjList = new GameObject[(int)EnumNumbers.Monsters];
     [SerializeField] Transform[] transformsHnad = new Transform[(int)EnumNumbers.Hands];
     public GameObject[,] BoardList { get; private set; } = new GameObject[(int)EnumBoardLength.MaxBoardLengthX, (int)EnumBoardLength.MaxBoardLengthY];
+    public CardStatus[,] CardStatuseList { get; private set; } = new CardStatus[(int)EnumBoardLength.MaxBoardLengthX, (int)EnumBoardLength.MaxBoardLengthY];
     public bool[,] TurnPlayerList { get; private set; } = new bool[(int)EnumBoardLength.MaxBoardLengthX, (int)EnumBoardLength.MaxBoardLengthY];
     private readonly GameObject[] hand = new GameObject[(int)EnumNumbers.Hands];
     private int[] deckIDs = new int[(int)EnumNumbers.Cards];
@@ -38,7 +39,8 @@ public class CardManager : MonoBehaviour
     {
         BoardList[cardLanes.X, cardLanes.Y] = hand[handID];
         BoardList[cardLanes.X, cardLanes.Y].transform.position = BoardManager.TransformList[cardLanes.X, cardLanes.Y].position;
-        BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>().Create(deckIDs[cardID], turn, cardLanes);
+        CardStatuseList[cardLanes.X, cardLanes.Y] = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
+        CardStatuseList[cardLanes.X, cardLanes.Y].Create(false, deckIDs[cardID], turn, cardLanes);
         TurnPlayerList[cardLanes.X, cardLanes.Y] = turn;
         Skill(cardLanes);
     }
@@ -65,7 +67,8 @@ public class CardManager : MonoBehaviour
     {
         BoardList[cardLanes.X, cardLanes.Y] =
             Instantiate(monsterObjList[ID], BoardManager.TransformList[cardLanes.X, cardLanes.Y].position, Quaternion.identity) as GameObject;
-        BoardList[cardLanes.X, cardLanes.Y].GetComponent<MonsterStatus>().Create(ID, cardLanes);
+        CardStatuseList[cardLanes.X, cardLanes.Y] = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
+        CardStatuseList[cardLanes.X, cardLanes.Y].Create(true, ID, false, cardLanes);
     }
 
     public void Movement(int gap, bool turn)
@@ -94,10 +97,13 @@ public class CardManager : MonoBehaviour
             if (BoardList[cardLanes.X, cardLanes.Y] == null)
                 return;
 
-            if (!BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>())
+            if (!CardStatuseList[cardLanes.X, cardLanes.Y])
                 return;
 
-            var card = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
+            if (CardStatuseList[cardLanes.X, cardLanes.Y].IsMonsterCard)
+                return;
+
+            var card = CardStatuseList[cardLanes.X, cardLanes.Y];
 
             // 自分のカードだけを動かすため
             if (turn && TurnPlayerList[cardLanes.X, cardLanes.Y] || !turn && !TurnPlayerList[cardLanes.X, cardLanes.Y])
@@ -110,6 +116,9 @@ public class CardManager : MonoBehaviour
 
                 PassiveSkill(cardLanes);
 
+                if (!CardStatuseList[cardLanes.X, cardLanes.Y])
+                    return;
+
                 if (nextBoard == (int)EnumBoardLength.MinBoard || nextBoard == (int)EnumBoardLength.MaxBoardX)
                 {
                     PlayerStatus.AddDirectDamage(card.MyAD, turn, cardLanes.Y);
@@ -119,73 +128,44 @@ public class CardManager : MonoBehaviour
                 {
                     JustMovement(cardLanes, nextBoard);
                 }
-                else if (BoardList[nextBoard, cardLanes.Y].GetComponent<CardStatus>())
+                else if (CardStatuseList[nextBoard, cardLanes.Y].IsMonsterCard)
+                {
+                    Battle<CardStatus>(cardLanes, nextBoard, CardStatuseList[nextBoard, cardLanes.Y]);
+                }
+                else if (CardStatuseList[nextBoard, cardLanes.Y])
                 {
                     if (turn && TurnPlayerList[nextBoard, cardLanes.Y] || !turn && !TurnPlayerList[nextBoard, cardLanes.Y])
                         return;
 
-                    Battle<CardStatus>(cardLanes, nextBoard, CreateEnemy<CardStatus>(nextBoard, cardLanes.Y));
-                }
-                else if (BoardList[nextBoard, cardLanes.Y].GetComponent<MonsterStatus>())
-                {
-                    BattleMonster<MonsterStatus>(cardLanes, nextBoard, CreateEnemy<MonsterStatus>(nextBoard, cardLanes.Y), turn);
+                    Battle<CardStatus>(cardLanes, nextBoard, CardStatuseList[nextBoard,cardLanes.Y]);
                 }
             }
         }
     }
 
-    public Type CreateEnemy<Type>(int lane, int nextBoard)
-    {
-        return BoardList[lane, nextBoard].GetComponent<Type>();
-    }
-
     public void Battle<Type>(CardLanes cardLanes, int nextBoard, Type type) where Type : CardStatus
     {
-        var thisCard = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
+        var thisCard = CardStatuseList[cardLanes.X, cardLanes.Y];
         var enemyCard = type;
+
         Debug.Log("<color=blue>" + thisCard.name + " VS " + enemyCard.name + "</color>");
-        if (enemyCard.MyHP <= thisCard.MyAD)
+
+        if (enemyCard.MyHP + enemyCard.MyShield <= thisCard.MyAD)
         {
             thisCard.AddDamage(enemyCard.MyAD, (int)EnumSkillType.AutoAttack);
             enemyCard.AddDamage(thisCard.MyAD, (int)EnumSkillType.AutoAttack);
 
             JustMovement(cardLanes, nextBoard);
         }
-        else if (thisCard.MyHP <= enemyCard.MyAD)
+        else if (thisCard.MyHP + thisCard.MyShield <= enemyCard.MyAD)
         {
             enemyCard.AddDamage(thisCard.MyAD, (int)EnumSkillType.AutoAttack);
             thisCard.AddDamage(enemyCard.MyAD, (int)EnumSkillType.AutoAttack);
         }
         else
         {
-            Destroyer(cardLanes);
-            Destroyer(new CardLanes { X = nextBoard, Y = cardLanes.Y });
-        }
-    }
-
-    public void BattleMonster<Type>(CardLanes cardLanes, int nextBoard, Type type, bool player) where Type : MonsterStatus
-    {
-        var thisCard = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
-        if (thisCard == null)
-            return;
-        var enemyMonster = type;
-
-        if (enemyMonster.MyHP <= thisCard.MyAD)
-        {
-            thisCard.AddDamage(enemyMonster.MyAD, (int)EnumSkillType.AutoAttack);
-            enemyMonster.AddDamage(thisCard.MyAD, player);
-
-            JustMovement(cardLanes, nextBoard);
-        }
-        else if (thisCard.MyHP <= enemyMonster.MyAD)
-        {
-            enemyMonster.AddDamage(thisCard.MyAD, player);
-            thisCard.AddDamage(enemyMonster.MyAD, (int)EnumSkillType.AutoAttack);
-        }
-        else
-        {
-            Destroyer(cardLanes);
-            Destroyer(cardLanes);
+            enemyCard.AddDamage(thisCard.MyAD, (int)EnumSkillType.AutoAttack);
+            thisCard.AddDamage(enemyCard.MyAD, (int)EnumSkillType.AutoAttack);
         }
     }
 
@@ -197,15 +177,17 @@ public class CardManager : MonoBehaviour
         if (BoardList[cardLanes.X, cardLanes.Y] == null)
             return;
 
-        var cardStatus = BoardList[cardLanes.X, cardLanes.Y].GetComponent<CardStatus>();
+        var cardStatus = CardStatuseList[cardLanes.X, cardLanes.Y];
         if (cardStatus == null)
             return;
 
         BoardList[cardLanes.X, cardLanes.Y].transform.position = BoardManager.TransformList[nextBoard, cardLanes.Y].position;
         BoardList[nextBoard, cardLanes.Y] = BoardList[cardLanes.X, cardLanes.Y];
+        CardStatuseList[nextBoard, cardLanes.Y] = CardStatuseList[cardLanes.X, cardLanes.Y];
         TurnPlayerList[nextBoard, cardLanes.Y] = TurnPlayerList[cardLanes.X, cardLanes.Y];
 
         BoardList[cardLanes.X, cardLanes.Y] = null;
+        CardStatuseList[cardLanes.X, cardLanes.Y] = null;
         TurnPlayerList[cardLanes.X, cardLanes.Y] = false;
 
         cardStatus.CardLanes.X = nextBoard;
@@ -215,6 +197,7 @@ public class CardManager : MonoBehaviour
     {
         Destroy(BoardList[cardLanes.X, cardLanes.Y]);
         BoardList[cardLanes.X, cardLanes.Y] = null;
+        CardStatuseList[cardLanes.X, cardLanes.Y] = null;
         TurnPlayerList[cardLanes.X, cardLanes.Y] = false;
     }
 }

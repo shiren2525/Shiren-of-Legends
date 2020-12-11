@@ -10,31 +10,43 @@ public class CardStatus : MonoBehaviour
     public int MyHP { get; set; }
     public int MyAD { get; set; }
     public float MyRatio { get; private set; }
+    public int MyShield { get; set; }
     public bool IsStun { get; set; }
-    private int myShield;
 
     public bool Player { get; private set; }
     public CardLanes CardLanes { get; set; }
 
     public bool IsOcean { get; set; }
+    public bool IsMonsterCard { get; set; }
 
-    public void Create(int ID, bool player, CardLanes cardLanes)
+    [SerializeField] CardData CardData = null;
+    [SerializeField] MonsterData MonsterData = null;
+
+    public void Create(bool isMonsterCard, int ID, bool player, CardLanes cardLanes)
     {
+        this.IsMonsterCard = isMonsterCard;
         myID = ID;
         this.Player = player;
         CardLanes = cardLanes;
 
-        var cardDate = GameObject.FindWithTag(nameof(CardData)).GetComponent<CardData>();
-        MyHP = cardDate.KeyValuesHP[myID];
-        MyAD = cardDate.KeyValuesAD[myID];
-        MyRatio = cardDate.KeyValuesRatio[myID];
+        if (IsMonsterCard)
+        {
+            MyHP = MonsterData.KeyValuesHP[myID];
+            MyAD = MonsterData.KeyValuesAD[myID];
+        }
+        else
+        {
+            MyHP = CardData.KeyValuesHP[myID];
+            MyAD = CardData.KeyValuesAD[myID];
+            MyRatio = CardData.KeyValuesRatio[myID];
+
+            CreateBuff();
+            ColorChange();
+        }
+
         MyMaxHP = MyHP;
-
-        CreateBuff();
-
-        ColorChange();
         SetText();
-        Debug.Log("Summoned ID " + myID + ":" + this.name);
+        Debug.Log("Summon ID " + myID + ":" + MyAD + "/" + MyHP + ":" + this.name);
     }
 
     private int buffCount = 0;
@@ -48,13 +60,14 @@ public class CardStatus : MonoBehaviour
         buffManager.Buff(CardLanes, Player);
     }
 
+    [SerializeField] Renderer Renderer = null;
     private void ColorChange()
     {
         if (Player)
-            this.GetComponent<Renderer>().material.color = Color.red;
+            Renderer.material.color = Color.red;
 
         else if (!Player)
-            this.GetComponent<Renderer>().material.color = Color.cyan;
+            Renderer.material.color = Color.cyan;
     }
 
     public void AddDamage(int damage, int damageType)
@@ -62,9 +75,9 @@ public class CardStatus : MonoBehaviour
         if (GetComponent<Card07Yasuo>() && (int)EnumSkillType.SkillShot == damageType)
             return;
 
-        if (damage < myShield)
+        if (damage < MyShield)
         {
-            myShield -= damage;
+            MyShield -= damage;
         }
         else
         {
@@ -72,8 +85,8 @@ public class CardStatus : MonoBehaviour
             {
                 checked
                 {
-                    MyHP -= (damage - myShield);
-                    myShield = 0;
+                    MyHP -= (damage - MyShield);
+                    MyShield = 0;
                 }
             }
             catch (OverflowException)
@@ -113,18 +126,14 @@ public class CardStatus : MonoBehaviour
     {
         MyHP += heal;
         SetText();
+
+        Debug.Log("<color=green>" + "Healed HP: " + MyHP + " : " + this.name + "</color>");
     }
 
+    private readonly int MaxShield = 2;
     public void AddShield(int shield)
     {
-        if (myShield + shield >= 2)
-        {
-            myShield = 2;
-        }
-        else
-        {
-            myShield += shield;
-        }
+        MyShield = MyShield + shield >= MaxShield ? MaxShield : MyShield += shield;
         SetText();
     }
 
@@ -138,13 +147,34 @@ public class CardStatus : MonoBehaviour
                 return;
         }
 
+        if (IsMonsterCard)
+        {
+            Destroyer(Player);
+        }
+
         var cardManager = GameObject.FindWithTag(nameof(CardManager)).GetComponent<CardManager>();
         cardManager.Destroyer(CardLanes);
+    }
+
+    private void Destroyer(bool player)
+    {
+        var buffManager = GameObject.FindWithTag(nameof(BuffManager)).GetComponent<BuffManager>();
+        var textManager = GameObject.FindWithTag(nameof(TextManager)).GetComponent<TextManager>();
+        if (player)
+        {
+            buffManager.RedBuffList.Add(myID);
+            textManager.CreateDragonIconinPanel(myID, player);
+        }
+        else if (!player)
+        {
+            buffManager.BlueBuffList.Add(myID);
+            textManager.CreateDragonIconinPanel(myID, player);
+        }
     }
 
     [SerializeField] Text Text = null;
     public void SetText()
     {
-        Text.text = MyAD.ToString() + "/" + MyHP.ToString() + "+" + myShield.ToString();
+        Text.text = MyAD.ToString() + "/" + MyHP.ToString() + "+" + MyShield.ToString();
     }
 }

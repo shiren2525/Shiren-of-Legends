@@ -89,6 +89,8 @@ GameObject:
   - component: {fileID: 8497998266379148370}
   - component: {fileID: 6627992257195506382}
   - component: {fileID: 7089509590200219643}
+  - component: {fileID: -5128133707527627272}
+  - component: {fileID: -4815656580770232251}
   m_Layer: 0
   m_Name: Yasuo
   m_TagString: Untagged
@@ -172,6 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1cf38c25f0f841962c51f368ea6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardData: {fileID: -5128133707527627272}
+  MonsterData: {fileID: -4815656580770232251}
+  Renderer: {fileID: 8497998266379148370}
   Text: {fileID: 7728725314679424368}
 --- !u!114 &7089509590200219643
 MonoBehaviour:
@@ -183,6 +188,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86e0062d24fe317418f81dffcfb46bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardStatus: {fileID: 6627992257195506382}
+--- !u!114 &-5128133707527627272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5621832499956403903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40c8c134ab045146b53f8f16bdba2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4815656580770232251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5621832499956403903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b666e48560a04e8b8277c85c3a33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8110147188980405543

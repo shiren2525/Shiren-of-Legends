@@ -1,8 +1,11 @@
-﻿public class Card07Yasuo : CardParent, IPassiveSkill
+﻿using UnityEngine;
+
+public class Card07Yasuo : CardParent, IPassiveSkill
 {
+    [SerializeField] private CardStatus CardStatus = null;
+
     public void PassiveSkill()
     {
-        var cardStatus = this.gameObject.GetComponent<CardStatus>();
-        cardStatus.AddShield((int)(cardStatus.MyAD*cardStatus.MyRatio));
+        CardStatus.AddShield((int)(CardStatus.MyAD * CardStatus.MyRatio));
     }
 }

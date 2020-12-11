@@ -2,10 +2,10 @@
 
 public class BoardManager : MonoBehaviour
 {
-    [SerializeField] Transform[] transforms = new Transform[(int)EnumBoardLength.MaxBoardLengthX];
-    [SerializeField] Transform[] transforms1 = new Transform[(int)EnumBoardLength.MaxBoardLengthX];
-    [SerializeField] Transform[] transforms2 = new Transform[(int)EnumBoardLength.MaxBoardLengthX];
-    [SerializeField] Transform[] transforms3 = new Transform[(int)EnumBoardLength.MaxBoardLengthX];
+    [SerializeField] private Transform[] transforms = new Transform[(int)EnumBoardLength.MaxBoardLengthX];
+    [SerializeField] private Transform[] transforms1 = new Transform[(int)EnumBoardLength.MaxBoardLengthX];
+    [SerializeField] private Transform[] transforms2 = new Transform[(int)EnumBoardLength.MaxBoardLengthX];
+    [SerializeField] private Transform[] transforms3 = new Transform[(int)EnumBoardLength.MaxBoardLengthX];
 
     public Transform[,] TransformList { get; } = new Transform[(int)EnumBoardLength.MaxBoardLengthX, (int)EnumBoardLength.MaxBoardLengthY];
 

@@ -2,31 +2,30 @@
 
 public class Card02Shyvana : MonoBehaviour, ISkill
 {
+    [SerializeField] private CardStatus CardStatus = null;
+
     public void ActiveSkill(int myLane)
     {
-        var cardStatus = this.gameObject.GetComponent<CardStatus>();
-        var player = cardStatus.Player;
+        var player = CardStatus.Player;
 
         var buffManager = GameObject.FindWithTag(nameof(BuffManager)).GetComponent<BuffManager>();
 
         if (player)
         {
-            var buffValue = buffManager.RedBuffList.Count;
-            Shyvana(buffValue);
+            Shyvana(buffManager.RedBuffList.Count);
         }
         else if (!player)
         {
-            var buffValue = buffManager.BlueBuffList.Count;
-            Shyvana(buffValue);
+            Shyvana(buffManager.BlueBuffList.Count);
         }
         
         void Shyvana(int buffValue)
         {
-            cardStatus.MyMaxHP += buffValue;
-            cardStatus.MyHP += buffValue;
-            cardStatus.MyAD += buffValue;
+            CardStatus.MyMaxHP += buffValue;
+            CardStatus.MyHP += buffValue;
+            CardStatus.MyAD += buffValue;
             
-            cardStatus.SetText();
+            CardStatus.SetText();
         }
     }
 }

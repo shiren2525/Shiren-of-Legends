@@ -1,14 +1,17 @@
-﻿public class Card05Soraka : CardParent, ISkill
+﻿using UnityEngine;
+
+public class Card05Soraka : CardParent, ISkill
 {
+    [SerializeField] private CardStatus CardStatus = null;
+
     public void ActiveSkill(int myLane)
     {
-        var cardStatus = this.gameObject.GetComponent<CardStatus>();
-        var myPlayer = cardStatus.Player;
+        var myPlayer = CardStatus.Player;
 
         var fullSearch = FullSearch((enemyPlayer, enemyLane) => enemyPlayer == myPlayer);
         foreach (var card in fullSearch)
         {
-            card.CardStatus.AddHeal((int)(cardStatus.MyAD * cardStatus.MyRatio));
+            card.CardStatus.AddHeal((int)(CardStatus.MyAD * CardStatus.MyRatio));
         }
     }
 }

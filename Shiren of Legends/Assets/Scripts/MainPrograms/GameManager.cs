@@ -67,15 +67,16 @@ public class GameManager : MonoBehaviour
         TextManager.SetPanel(turn);
         SoundManager.PlaySound((int)EnumAudioClips.NextTurn);
         NarrationManager.SetSerif((int)EnumNarrationTexts.NextPlayersTurn);
-        SummonMonster((int)EnumBoardLength.MaxBoardY);
+        SummonMonster(randomNum);
         NextFaith();
     }
 
-    private void SummonMonster(int laneY)
+    private void SummonMonster(int randomNum)
     {
         if (turnNum % 5 == 0)
         {
-            if (laneY < 0)
+            var laneY = randomNum < (int)EnumBoardLength.MaxBoardLengthY ? randomNum : (int)EnumBoardLength.MaxBoardY;
+            if (laneY < (int)EnumBoardLength.MinBoard)
                 return;
 
             var cardLanes = new CardLanes { X = (int)EnumBoardLength.MaxBoardX / 2, Y = laneY };
@@ -92,10 +93,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private int randomNum;
     private void Draw()
     {
-        cardID0 = Random.Range(0, (int)EnumNumbers.Cards);
-        cardID1 = Random.Range(0, (int)EnumNumbers.Cards);
+        randomNum = Random.Range(0, (int)EnumNumbers.Cards);
+        cardID0 = randomNum;
+        cardID1 = randomNum + 1 == 8 ? 0 : randomNum + 1;
         CardManager.Draw(cardID0, cardID1);
         TimeBarController.StartCoroutine();
         NarrationManager.SetSerif((int)EnumNarrationTexts.SelectHand);
@@ -126,11 +129,12 @@ public class GameManager : MonoBehaviour
                 cardID = cardID0;
                 handID = 0;
             }
+            isInput = false;
             IsTimeLimit = false;
             Cursor.transform.position = BoardManager.TransformList[StartingLaneX, laneY].transform.position;
             End();
         }
-        else if (isCPU && turn)
+        else if (isCPU)
         {
             cardID = cardID0;
             handID = 0;
@@ -147,7 +151,6 @@ public class GameManager : MonoBehaviour
             {
                 CardManager.DeleteHand(0);
             }
-            isInput = !isInput;
             SoundManager.PlaySound((int)EnumAudioClips.Draw);
             NarrationManager.SetSerif((int)EnumNarrationTexts.SelectLane);
             TimeBarController.StopCoroutine();
@@ -179,7 +182,7 @@ public class GameManager : MonoBehaviour
             IsTimeLimit = false;
             End();
         }
-        else if (isCPU && turn)
+        else if (isCPU)
         {
             laneY = Random.Range(0, (int)EnumBoardLength.MaxBoardLengthY);
             End();
