@@ -60,6 +60,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 104
@@ -73,15 +75,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10334}
     - Class: 114
-      Script: {instanceID: 10946}
+      Script: {instanceID: 10944}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 11206}
     - Class: 114
-      Script: {instanceID: 11304}
+      Script: {instanceID: 11300}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 11402}
     - Class: 114
-      Script: {instanceID: 11596}
+      Script: {instanceID: 11592}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -110,8 +112,6 @@ ScriptsOnlyBuild:
     - Class: 28
       Script: {instanceID: 0}
     - Class: 48
-      Script: {instanceID: 0}
-    - Class: 49
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -158,35 +158,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10768}
     - Class: 114
-      Script: {instanceID: 10818}
+      Script: {instanceID: 10816}
     - Class: 114
-      Script: {instanceID: 10946}
+      Script: {instanceID: 10944}
     - Class: 114
-      Script: {instanceID: 11028}
+      Script: {instanceID: 11026}
     - Class: 114
-      Script: {instanceID: 11112}
+      Script: {instanceID: 11110}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 11206}
     - Class: 114
-      Script: {instanceID: 11212}
+      Script: {instanceID: 11210}
     - Class: 114
-      Script: {instanceID: 11312}
+      Script: {instanceID: 11308}
     - Class: 114
-      Script: {instanceID: 11338}
+      Script: {instanceID: 11334}
     - Class: 114
-      Script: {instanceID: 11364}
+      Script: {instanceID: 11360}
     - Class: 114
-      Script: {instanceID: 11488}
+      Script: {instanceID: 11484}
     - Class: 114
-      Script: {instanceID: 11538}
+      Script: {instanceID: 11534}
     - Class: 114
-      Script: {instanceID: 11544}
+      Script: {instanceID: 11540}
     - Class: 114
-      Script: {instanceID: 11596}
+      Script: {instanceID: 11592}
     - Class: 114
-      Script: {instanceID: 11630}
+      Script: {instanceID: 11626}
     - Class: 114
-      Script: {instanceID: 11652}
+      Script: {instanceID: 11648}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -776,6 +776,6 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 19
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/DeckBuild.unity
-  playerPath: D:/Game_Exe/SoL_var1.2/Shiren of Legends.exe
+  - Assets/Scenes/SampleScene.unity
+  playerPath: D:/Game_Exe/SoL_ver1.4/Shiren of Legends.exe

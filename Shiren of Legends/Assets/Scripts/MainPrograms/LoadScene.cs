@@ -2,7 +2,7 @@
 {
     public void ResetGames()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public void ExitGames()

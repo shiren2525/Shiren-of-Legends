@@ -272,7 +272,7 @@ public class GameManager : MonoBehaviour
     {
         FaithUpdate();
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             InfoPanel.PanelChange();
         }
