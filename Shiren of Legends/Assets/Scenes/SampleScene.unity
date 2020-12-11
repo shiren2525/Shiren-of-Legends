@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CardManager: {fileID: 1525223296}
+  InfoPanel: {fileID: 1363173287}
   FullCards:
   - {fileID: 4052096797411834533, guid: 30bc61e5b00085a4282e4403903a474d, type: 3}
   - {fileID: 3960137520345836952, guid: 4006c88bc5ff80d4dad433525fcd2fc6, type: 3}
@@ -2522,7 +2523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 600, y: -74.99997}
+  m_AnchoredPosition: {x: 637.5, y: -75.000015}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &677286316
@@ -4303,8 +4304,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 200, y: -25}
-  m_SizeDelta: {x: 250, y: 50}
+  m_AnchoredPosition: {x: 237.5, y: -25}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1203090546
 MonoBehaviour:
@@ -4956,6 +4957,24 @@ MonoBehaviour:
   - {fileID: 2012593697}
   - {fileID: 1566800870}
   - {fileID: 1790361572}
+  Images:
+  - {fileID: 920795286}
+  - {fileID: 1366815812}
+  - {fileID: 17514074}
+  - {fileID: 1681827202}
+  - {fileID: 579000736}
+  - {fileID: 722817504}
+  - {fileID: 950464143}
+  - {fileID: 92620029}
+  FullCardSprites:
+  - {fileID: 21300000, guid: 536dde24c8c0933419c3a8771fd607b5, type: 3}
+  - {fileID: 21300000, guid: db0578d659c605240b4bbfcb04295a61, type: 3}
+  - {fileID: 21300000, guid: b5fc44bf47416c64ea37fa04fbd31012, type: 3}
+  - {fileID: 21300000, guid: c204c5c7cc3d9af489e11c7e0e6f64f4, type: 3}
+  - {fileID: 21300000, guid: 80c0df1313f83284f88469f6524e9d3f, type: 3}
+  - {fileID: 21300000, guid: 6ff2f8543d4da4e4f816c3ea988da79b, type: 3}
+  - {fileID: 21300000, guid: 75398e887952db841b10782f45c4e535, type: 3}
+  - {fileID: 21300000, guid: c6f57bca85037f64797bba5b2f05e9d3, type: 3}
   Canvas: {fileID: 1688442056}
 --- !u!4 &1363173288
 Transform:
@@ -5218,8 +5237,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -200, y: -25}
-  m_SizeDelta: {x: 250, y: 50}
+  m_AnchoredPosition: {x: -237.49998, y: -25}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469769812
 MonoBehaviour:
@@ -5317,7 +5336,7 @@ MonoBehaviour:
   TextManager: {fileID: 1713397222}
   TimeBarController: {fileID: 187753833}
   NarrationManager: {fileID: 422310773}
-  InfoPanel: {fileID: 0}
+  InfoPanel: {fileID: 1363173287}
   BoardManager: {fileID: 2071018728}
   Cursor: {fileID: 274676414}
   transformsHnad:
@@ -6586,7 +6605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -74.99997}
+  m_AnchoredPosition: {x: 162.5, y: -75.000015}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1974506047

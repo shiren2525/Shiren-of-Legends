@@ -4,4 +4,5 @@
     Monsters = 5,
     Cards = 8,
     PlayerHP = 12,
+    FullCards = 8,
 }

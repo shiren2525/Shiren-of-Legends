@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DeckBuild : MonoBehaviour
 {
-    [SerializeField] private SetParentScript SetParentScript = null;
+    [SerializeField] private SetSpriteScript SetSpriteScript = null;
     [SerializeField] private Transform[] transforms = new Transform[(int)EnumNumbers.Cards];
     private int num;
     private readonly List<int> deckList = new List<int>((int)EnumNumbers.Cards);
@@ -34,13 +34,13 @@ public class DeckBuild : MonoBehaviour
                 return;
 
             deckList.Add(num);
-            SetParentScript.SetPanel(num);
+            SetSpriteScript.ReceiveCardID(num);
             ShowListContentsInTheDebugLog(deckList);
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
             deckList.Clear();
-            SetParentScript.DeletePanel();
+            SetSpriteScript.DeleteDeck();
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {

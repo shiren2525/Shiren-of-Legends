@@ -5,24 +5,24 @@ public class InfoPanel : MonoBehaviour
 {
     [SerializeField] private CardData CardDate = null;
     [SerializeField] private Text[] Texts = new Text[(int)EnumNumbers.Cards];
+    [SerializeField] private Image[] Images = new Image[(int)EnumNumbers.Cards];
+    [SerializeField] private Sprite[] FullCardSprites = new Sprite[(int)EnumNumbers.FullCards];
 
-    private void Init()
+    public void Init(int[] cardIDs)
     {
         var loadtext = (Resources.Load("CardEffect", typeof(TextAsset)) as TextAsset).text;
         string[] spliteText = loadtext.Split('\n');
+        var num = 0;
 
-        for (int i = 0; i < (int)EnumNumbers.Cards; i++)
+        foreach(var val in cardIDs)
         {
-            Texts[i].text =
-                CardDate.KeyValuesName[i] + ":HP" + CardDate.KeyValuesHP[i].ToString() + "/AD" + CardDate.KeyValuesAD[i].ToString() + "\n" +
-                spliteText[i].Replace("ad", (CardDate.KeyValuesAD[i] * CardDate.KeyValuesRatio[i]).ToString())
-                             .Replace("hp", CardDate.KeyValuesHP[i].ToString());
+            Texts[num].text=
+                CardDate.KeyValuesName[val] + ":HP" + CardDate.KeyValuesHP[val].ToString() + "/AD" + CardDate.KeyValuesAD[val].ToString() + "\n" +
+                spliteText[val].Replace("ad", (CardDate.KeyValuesAD[val] * CardDate.KeyValuesRatio[val]).ToString())
+                             .Replace("hp", CardDate.KeyValuesHP[val].ToString());
+            Images[num].sprite = FullCardSprites[val];
+            num++;
         }
-    }
-
-    private void Start()
-    {
-        Init();
     }
 
     [SerializeField] private GameObject Canvas = null;

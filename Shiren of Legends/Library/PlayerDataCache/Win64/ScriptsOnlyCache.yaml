@@ -22,7 +22,7 @@ ScriptsOnlyBuild:
     - MonsterData
     - NarrationManager
     - PlayerStatus
-    - SetParentScript
+    - SetSpriteScript
     - SoundManager
     - TextManager
     - TimeBarController
@@ -32,11 +32,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
-    Unity.TextMeshPro.dll:
-    - TMPro.TMP_FontAsset
-    - TMPro.TMP_Settings
-    - TMPro.TMP_SpriteAsset
-    - TMPro.TMP_StyleSheet
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -126,8 +121,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
-    - Class: 109
-      Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 9696}
     - Class: 114
@@ -151,8 +144,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10334}
     - Class: 114
-      Script: {instanceID: 10354}
-    - Class: 114
       Script: {instanceID: 10362}
     - Class: 114
       Script: {instanceID: 10530}
@@ -171,10 +162,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10946}
     - Class: 114
-      Script: {instanceID: 10950}
-    - Class: 114
-      Script: {instanceID: 10964}
-    - Class: 114
       Script: {instanceID: 11028}
     - Class: 114
       Script: {instanceID: 11112}
@@ -188,8 +175,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11338}
     - Class: 114
       Script: {instanceID: 11364}
-    - Class: 114
-      Script: {instanceID: 11386}
     - Class: 114
       Script: {instanceID: 11488}
     - Class: 114
@@ -473,7 +458,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 23b71ce6aefaf09691c287e0193b36d1
+      Hash: ad19453b88d5e22fdd532f5e95f6fc4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeckCreator
@@ -543,12 +528,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Test
   - hash:
       serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
@@ -647,16 +626,10 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 11bdd61587db747672b66c52442395d8
+      Hash: b6c0c14c4ac2c0c91b04507b9d4dc8c1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: MonsterStatus
-  - hash:
-      serializedVersion: 2
-      Hash: d458bbfff402b325637d9dfc26538bc9
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SetParentScript
+    className: SetSpriteScript
   - hash:
       serializedVersion: 2
       Hash: af1d349d47ec17e77b7a22d055469726
@@ -665,7 +638,7 @@ ScriptsOnlyBuild:
     className: Card07Yasuo
   - hash:
       serializedVersion: 2
-      Hash: c924e811d3c28ccdf30c83c48922fd8e
+      Hash: f9234f823042e6ce4b908ae8294940ec
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InfoPanel
@@ -689,7 +662,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: ececeab782d34397a70f19719e92a822
+      Hash: 95c80bdccada39a62ee166e0590ce6da
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeckBuild
@@ -805,4 +778,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/DeckBuild.unity
-  playerPath: D:/Game_Exe/SoL_var1.1/Shiren of Legends.exe
+  playerPath: D:/Game_Exe/SoL_var1.2/Shiren of Legends.exe
