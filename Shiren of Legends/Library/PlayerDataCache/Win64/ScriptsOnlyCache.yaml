@@ -67,23 +67,23 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9696}
+      Script: {instanceID: 9698}
     - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 9912}
+      Script: {instanceID: 9914}
     - Class: 114
-      Script: {instanceID: 10334}
+      Script: {instanceID: 10336}
     - Class: 114
-      Script: {instanceID: 10944}
+      Script: {instanceID: 10946}
     - Class: 114
-      Script: {instanceID: 11206}
+      Script: {instanceID: 11208}
     - Class: 114
-      Script: {instanceID: 11300}
+      Script: {instanceID: 11302}
     - Class: 114
-      Script: {instanceID: 11402}
+      Script: {instanceID: 11404}
     - Class: 114
-      Script: {instanceID: 11592}
+      Script: {instanceID: 11594}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -122,71 +122,71 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9696}
+      Script: {instanceID: 9698}
     - Class: 114
-      Script: {instanceID: 9720}
+      Script: {instanceID: 9722}
     - Class: 114
-      Script: {instanceID: 9732}
+      Script: {instanceID: 9734}
     - Class: 114
-      Script: {instanceID: 9788}
-    - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9790}
     - Class: 114
       Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 9912}
+      Script: {instanceID: 9872}
     - Class: 114
-      Script: {instanceID: 10038}
+      Script: {instanceID: 9914}
     - Class: 114
-      Script: {instanceID: 10056}
+      Script: {instanceID: 10040}
     - Class: 114
-      Script: {instanceID: 10090}
+      Script: {instanceID: 10058}
     - Class: 114
-      Script: {instanceID: 10334}
+      Script: {instanceID: 10092}
     - Class: 114
-      Script: {instanceID: 10362}
+      Script: {instanceID: 10336}
     - Class: 114
-      Script: {instanceID: 10530}
+      Script: {instanceID: 10364}
     - Class: 114
-      Script: {instanceID: 10550}
+      Script: {instanceID: 10532}
     - Class: 114
-      Script: {instanceID: 10588}
+      Script: {instanceID: 10552}
     - Class: 114
-      Script: {instanceID: 10658}
+      Script: {instanceID: 10590}
     - Class: 114
-      Script: {instanceID: 10678}
+      Script: {instanceID: 10660}
     - Class: 114
-      Script: {instanceID: 10768}
+      Script: {instanceID: 10680}
     - Class: 114
-      Script: {instanceID: 10816}
+      Script: {instanceID: 10770}
     - Class: 114
-      Script: {instanceID: 10944}
+      Script: {instanceID: 10818}
     - Class: 114
-      Script: {instanceID: 11026}
+      Script: {instanceID: 10946}
     - Class: 114
-      Script: {instanceID: 11110}
+      Script: {instanceID: 11028}
     - Class: 114
-      Script: {instanceID: 11206}
+      Script: {instanceID: 11112}
     - Class: 114
-      Script: {instanceID: 11210}
+      Script: {instanceID: 11208}
     - Class: 114
-      Script: {instanceID: 11308}
+      Script: {instanceID: 11212}
     - Class: 114
-      Script: {instanceID: 11334}
+      Script: {instanceID: 11310}
     - Class: 114
-      Script: {instanceID: 11360}
+      Script: {instanceID: 11336}
     - Class: 114
-      Script: {instanceID: 11484}
+      Script: {instanceID: 11362}
     - Class: 114
-      Script: {instanceID: 11534}
+      Script: {instanceID: 11486}
     - Class: 114
-      Script: {instanceID: 11540}
+      Script: {instanceID: 11536}
     - Class: 114
-      Script: {instanceID: 11592}
+      Script: {instanceID: 11542}
     - Class: 114
-      Script: {instanceID: 11626}
+      Script: {instanceID: 11594}
     - Class: 114
-      Script: {instanceID: 11648}
+      Script: {instanceID: 11628}
+    - Class: 114
+      Script: {instanceID: 11650}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -778,4 +778,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/DeckBuild.unity
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Game_Exe/SoL_ver1.4/Shiren of Legends.exe
+  playerPath: D:/Game_Exe/SoL_var1.6/Shiren of Legends.exe
