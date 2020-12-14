@@ -16,7 +16,7 @@ public class Card03Karthus : CardParent, IHasSlain
         var fullSearch = FullSearch((enemyPlayer, enemyLane) => enemyPlayer != myPlayer);
         foreach (var card in fullSearch)
         {
-            card.CardStatus.AddDamage((int)(CardStatus.MyAD * CardStatus.MyRatio), (int)EnumSkillType.AreaOfEffect);
+            card.CardStatus.AddDamage(myPlayer,(int)(CardStatus.MyAD * CardStatus.MyRatio), (int)EnumSkillType.AreaOfEffect);
         }
 
         canSkill = !canSkill;

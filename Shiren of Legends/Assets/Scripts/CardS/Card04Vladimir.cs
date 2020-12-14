@@ -6,7 +6,7 @@ public class Card04Vladimir : MonoBehaviour, IPassiveSkill, ILifeSteal
 
     public void PassiveSkill()
     {
-        CardStatus.AddDamage((int)(CardStatus.MyAD * CardStatus.MyRatio), (int)EnumSkillType.AreaOfEffect);
+        CardStatus.AddDamage(CardStatus.Player, (int)(CardStatus.MyAD * CardStatus.MyRatio), (int)EnumSkillType.AreaOfEffect);
     }
 
     public void LifeSteal()

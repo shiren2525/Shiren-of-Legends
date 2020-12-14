@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private int faith = 0;
     private int cardID = 0, cardID0 = 0, cardID1 = 0;
     private int turnNum = 0;
-    private bool isCPU = false;
+    private bool isCPU = true;
     private int laneY = 0;
 
     public bool IsTimeLimit { get; set; }
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
             Cursor.transform.position = BoardManager.TransformList[StartingLaneX, laneY].transform.position;
             End();
         }
-        else if (isCPU)
+        else if (isCPU && turn)
         {
             cardID = cardID0;
             handID = 0;
@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
             IsTimeLimit = false;
             End();
         }
-        else if (isCPU)
+        else if (isCPU && turn)
         {
             laneY = Random.Range(0, (int)EnumBoardLength.MaxBoardLengthY);
             End();

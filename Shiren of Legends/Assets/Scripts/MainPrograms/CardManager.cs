@@ -130,20 +130,20 @@ public class CardManager : MonoBehaviour
                 }
                 else if (CardStatuseList[nextBoard, cardLanes.Y].IsMonsterCard)
                 {
-                    Battle<CardStatus>(cardLanes, nextBoard, CardStatuseList[nextBoard, cardLanes.Y]);
+                    Battle<CardStatus>(turn, cardLanes, nextBoard, CardStatuseList[nextBoard, cardLanes.Y]);
                 }
                 else if (CardStatuseList[nextBoard, cardLanes.Y])
                 {
                     if (turn && TurnPlayerList[nextBoard, cardLanes.Y] || !turn && !TurnPlayerList[nextBoard, cardLanes.Y])
                         return;
 
-                    Battle<CardStatus>(cardLanes, nextBoard, CardStatuseList[nextBoard,cardLanes.Y]);
+                    Battle<CardStatus>(turn, cardLanes, nextBoard, CardStatuseList[nextBoard, cardLanes.Y]);
                 }
             }
         }
     }
 
-    public void Battle<Type>(CardLanes cardLanes, int nextBoard, Type type) where Type : CardStatus
+    public void Battle<Type>(bool turn, CardLanes cardLanes, int nextBoard, Type type) where Type : CardStatus
     {
         var thisCard = CardStatuseList[cardLanes.X, cardLanes.Y];
         var enemyCard = type;
@@ -152,20 +152,20 @@ public class CardManager : MonoBehaviour
 
         if (enemyCard.MyHP + enemyCard.MyShield <= thisCard.MyAD)
         {
-            thisCard.AddDamage(enemyCard.MyAD, (int)EnumSkillType.AutoAttack);
-            enemyCard.AddDamage(thisCard.MyAD, (int)EnumSkillType.AutoAttack);
+            thisCard.AddDamage(turn, enemyCard.MyAD, (int)EnumSkillType.AutoAttack);
+            enemyCard.AddDamage(turn, thisCard.MyAD, (int)EnumSkillType.AutoAttack);
 
             JustMovement(cardLanes, nextBoard);
         }
         else if (thisCard.MyHP + thisCard.MyShield <= enemyCard.MyAD)
         {
-            enemyCard.AddDamage(thisCard.MyAD, (int)EnumSkillType.AutoAttack);
-            thisCard.AddDamage(enemyCard.MyAD, (int)EnumSkillType.AutoAttack);
+            enemyCard.AddDamage(turn, thisCard.MyAD, (int)EnumSkillType.AutoAttack);
+            thisCard.AddDamage(turn, enemyCard.MyAD, (int)EnumSkillType.AutoAttack);
         }
         else
         {
-            enemyCard.AddDamage(thisCard.MyAD, (int)EnumSkillType.AutoAttack);
-            thisCard.AddDamage(enemyCard.MyAD, (int)EnumSkillType.AutoAttack);
+            enemyCard.AddDamage(turn, thisCard.MyAD, (int)EnumSkillType.AutoAttack);
+            thisCard.AddDamage(turn, enemyCard.MyAD, (int)EnumSkillType.AutoAttack);
         }
     }
 

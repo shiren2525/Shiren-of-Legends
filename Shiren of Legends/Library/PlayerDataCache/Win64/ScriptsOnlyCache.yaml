@@ -778,4 +778,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/DeckBuild.unity
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Game_Exe/SoL_ver1.7/Shiren of Legends.exe
+  playerPath: D:/Game_Exe/SoL_ver1.8/Shiren of Legends.exe

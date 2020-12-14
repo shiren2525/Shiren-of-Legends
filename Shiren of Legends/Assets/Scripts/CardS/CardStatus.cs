@@ -70,7 +70,7 @@ public class CardStatus : MonoBehaviour
             Renderer.material.color = Color.cyan;
     }
 
-    public void AddDamage(int damage, int damageType)
+    public void AddDamage(bool turn,int damage, int damageType)
     {
         if (GetComponent<Card07Yasuo>() && (int)EnumSkillType.SkillShot == damageType)
             return;
@@ -96,15 +96,15 @@ public class CardStatus : MonoBehaviour
         }
         Debug.Log("<color=magenta>" + "Dameged HP:" + MyHP + " / " + this.name + "</color>");
 
-        CheckArrive(damageType);
+        CheckArrive(turn,damageType);
         SetText();
     }
 
-    private void CheckArrive(int damageType)
+    private void CheckArrive(bool turn,int damageType)
     {
         if (MyHP <= 0)
         {
-            Destroyer();
+            Destroyer(turn);
         }
         else if (MyHP >= 0)
         {
@@ -137,7 +137,7 @@ public class CardStatus : MonoBehaviour
         SetText();
     }
 
-    private void Destroyer()
+    private void Destroyer(bool turn)
     {
         var card = this.gameObject.GetComponent<IHasSlain>();
         if (card != null)
@@ -149,26 +149,26 @@ public class CardStatus : MonoBehaviour
 
         if (IsMonsterCard)
         {
-            Destroyer(Player);
+            SendBuff(turn);
         }
 
         var cardManager = GameObject.FindWithTag(nameof(CardManager)).GetComponent<CardManager>();
         cardManager.Destroyer(CardLanes);
     }
 
-    private void Destroyer(bool player)
+    private void SendBuff(bool turn)
     {
         var buffManager = GameObject.FindWithTag(nameof(BuffManager)).GetComponent<BuffManager>();
         var textManager = GameObject.FindWithTag(nameof(TextManager)).GetComponent<TextManager>();
-        if (player)
+        if (turn)
         {
             buffManager.RedBuffList.Add(myID);
-            textManager.CreateDragonIconinPanel(myID, player);
+            textManager.CreateDragonIconinPanel(myID, turn);
         }
-        else if (!player)
+        else if (!turn)
         {
             buffManager.BlueBuffList.Add(myID);
-            textManager.CreateDragonIconinPanel(myID, player);
+            textManager.CreateDragonIconinPanel(myID, turn);
         }
     }
 
